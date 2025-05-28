@@ -12,7 +12,9 @@ Planning Poker:
 ## Assumptions (if any):
 
 ## Description: 
-Description-v1: As a user, I want to pay for cleaning services directly through the app so that I don’t have to handle cash transactions. The system should support secure and seamless in-app payments, including integration with commonly used payment methods such as credit/debit cards, mobile wallets (e.g., Apple Pay, Google Pay), and PayNow. Users should be able to view payment confirmation, track transaction history, and receive digital receipts. The system must ensure encryption and compliance with relevant financial regulations to protect user data. 
+Description-v1: As a customer, I want to pay for cleaning services directly in the app using card or PayNow so that I don’t need to handle cash.
+
+Description-v2: As a user, I want to pay for cleaning services directly through the app so that I don’t have to handle cash transactions. The system should support secure and seamless in-app payments, including integration with commonly used payment methods such as credit/debit cards, mobile wallets (e.g., Apple Pay, Google Pay), and PayNow. Users should be able to view payment confirmation, track transaction history, and receive digital receipts. The system must ensure encryption and compliance with relevant financial regulations to protect user data. 
 
 ## Tasks
 
