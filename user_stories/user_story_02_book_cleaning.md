@@ -1,7 +1,5 @@
 # Book Cleaning Service
 
-Other versions: "Schedule a cleaning", "Select service date/time", "Request home cleaning"
-
 ## Priority: High  
 Allow users to schedule cleaning sessions conveniently.
 
