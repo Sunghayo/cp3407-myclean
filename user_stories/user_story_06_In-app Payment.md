@@ -1,6 +1,6 @@
 # In-app Payment
 
-## Priority: 10
+## Priority: High
 Secure payment system for user convenience.
 
 ## Estimation: 3 days
