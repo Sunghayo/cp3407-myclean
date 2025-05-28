@@ -10,11 +10,11 @@ Secure and simple authentication for users.
 * Mi-La: 2 days
 * Yuyang: 2 days
 
-## Assumptions (if any):
+## Assumptions
 - Users already have a registered email/password.
 - Basic authentication is sufficient for MVP.
   
-## Description: e.g. The web page will show current deals to Orion's orbits users
+## Description:
 Description-v1: As a registered user, I want to securely log into the app using my email and password so that I can access my personal dashboard, view past bookings, and manage future appointments. The login process should validate user credentials, provide error messages for invalid attempts, and support session management for keeping users signed in securely.
 
 Description-v2: 
