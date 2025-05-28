@@ -13,7 +13,9 @@ Planning Poker:
 - Users are already logged in
 
 ## Description: 
-Description-v1: As a cleaner, I want to set my available time slots so that customers can only book when I am free. The system should provide an intuitive calendar or time slot interface where cleaners can specify their working hours, breaks, and unavailable days. It should support recurring availability patterns (e.g., every Monday 9 AM - 5 PM) and allow for one-time overrides (e.g., block out specific dates for personal leave). Customers should only see time slots that match cleaner availability during the booking process. The system should prevent double bookings and update availability in real-time when new appointments are confirmed. 
+Description-v1: As a cleaner, I want to set my available time slots so that customers can only book when I am free.
+
+Description-v2: As a cleaner, I want to set my available time slots so that customers can only book when I am free. The system should provide an intuitive calendar or time slot interface where cleaners can specify their working hours, breaks, and unavailable days. It should support recurring availability patterns (e.g., every Monday 9 AM - 5 PM) and allow for one-time overrides (e.g., block out specific dates for personal leave). Customers should only see time slots that match cleaner availability during the booking process. The system should prevent double bookings and update availability in real-time when new appointments are confirmed. 
 
 ## Tasks
 
