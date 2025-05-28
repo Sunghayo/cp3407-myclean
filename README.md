@@ -12,9 +12,9 @@ The following is the list of items, which are required to be completed.
 
 It is recommended to complete this assignment in a group of 2-4 students.
 1. Hwang Sungha
-2.
-3.
-4.
+2. Mi-La Ang
+3. Yuyang Chao
+
 
 
 # Project planning BEFORE iteration-1, (see chapters 1-3)
