@@ -13,9 +13,9 @@ Secure and simple authentication for users.
 - Basic authentication is sufficient for MVP.
   
 ## Description:
-Description-v1: As a registered user, I want to securely log into the app using my email and password so that I can access my personal dashboard, view past bookings, and manage future appointments. The login process should validate user credentials, provide error messages for invalid attempts, and support session management for keeping users signed in securely.
+Description-v1: As a registered user, I want to securely log into the app using my email and password so that I can manage my dashboard, view past bookings, and manage future appointments.
 
-Description-v2: 
+Description-v2: As a registered user, I want to securely log into the app using my email and password so that I can access my personal dashboard, view past bookings, and manage future appointments. The login process should validate user credentials, provide error messages for invalid attempts, and support session management for keeping users signed in securely.
 
 ## Tasks
 
