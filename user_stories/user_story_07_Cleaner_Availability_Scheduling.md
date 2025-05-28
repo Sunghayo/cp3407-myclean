@@ -1,6 +1,6 @@
 # Cleaner Availability Scheduling
 
-## Priority: 6
+## Priority: Medium
 Important for better booking flow.
 
 ## Estimation: 2 days
