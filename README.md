@@ -8,9 +8,7 @@ How to edit this: test-2025
 This a project assignment template for CP3407. 
 The following is the list of items, which are required to be completed.
 
-## Team
-
-It is recommended to complete this assignment in a group of 2-4 students.
+## Group 8 (Prac B)
 1. Hwang Sungha
 2. Mi-La Ang
 3. Yuyang Chao
