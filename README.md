@@ -3,7 +3,7 @@ How to edit this: test-2025
 * Option-1 (tested and worked ok): PyCharm supports editing of these .md files. Then you need to push to the main branch or make a pull request.
 * Option-2 (tested ok): Edit and commit it directly on github. Then any local repo copies will need to be "updated".
 
-# cp3407-project-v2024 Hwang Sungha
+# cp3407-project-v2024 Prac B
 
 This a project assignment template for CP3407. 
 The following is the list of items, which are required to be completed.
