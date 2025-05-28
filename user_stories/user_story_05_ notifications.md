@@ -12,7 +12,9 @@ Planning Poker:
 ## Assumptions (if any):
 
 ## Description: 
-Description-v1: As a user, I want to receive automatic notifications for bookings and updates so that I’m always informed. The system should send timely alerts for key events such as booking confirmations, upcoming appointments, cancellations, and changes to scheduled services. Users should be able to choose their preferred channels (e.g., email, SMS, or in-app push notifications) and configure notification preferences in their profile settings. The notification system must be reliable, respect user time zones, and include clear, concise messages with relevant details. This ensures users stay engaged and prepared without needing to constantly check the app.
+Description-v1: As a user, I want to receive automatic notifications for bookings and updates so that I’m always informed.
+
+Description-v2: As a user, I want to receive automatic notifications for bookings and updates so that I’m always informed. The system should send timely alerts for key events such as booking confirmations, upcoming appointments, cancellations, and changes to scheduled services. Users should be able to choose their preferred channels (e.g., email, SMS, or in-app push notifications) and configure notification preferences in their profile settings. The notification system must be reliable, respect user time zones, and include clear, concise messages with relevant details. This ensures users stay engaged and prepared without needing to constantly check the app.
 
 ## Tasks
 
