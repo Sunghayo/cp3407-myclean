@@ -14,3 +14,9 @@
 
 - **Notifications** | Priority: Low  
   - As a user, I want to receive reminders for my bookings.
+
+- **In-app Payment** | Priority: High
+  - As a user, I want to pay for cleaning services directly through the app so that I don’t have to handle cash transactions.
+
+- **Cleaner Availability Scheduling** | Priority: Medium
+  - As a cleaner, I want to set my available time slots so that customers can only book when I am free.
