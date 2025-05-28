@@ -15,7 +15,9 @@ Planning Poker:
 - The system will display average ratings and recent reviews on the cleaner’s profile
 
 ## Description: 
-Description-v1: As a user, I want to leave reviews and ratings for cleaners after a completed service so that others can make informed decisions. The system should support a simple and intuitive review interface where users can provide a star rating (e.g., 1 to 5 stars) and an optional written comment. Only users with verified and completed bookings should be able to submit reviews to ensure credibility. 
+Description-v1: As a customer, I want to leave a star rating and review after a service so that I can provide feedback and help others.
+
+Description-v2: As a user, I want to leave reviews and ratings for cleaners after a completed service so that others can make informed decisions. The system should support a simple and intuitive review interface where users can provide a star rating (e.g., 1 to 5 stars) and an optional written comment. Only users with verified and completed bookings should be able to submit reviews to ensure credibility. 
 
 ## Tasks
 
