@@ -19,7 +19,7 @@ Description-v1: As a registered user, I want to securely log into the app using 
 
 Description-v2: 
 
-## Tasks, see chapter 4.
+## Tasks
 
 1. Design login UI with email & password fields: 0.5 day
 2. Implement authentication logic (backend): 1 day
