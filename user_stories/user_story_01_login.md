@@ -1,6 +1,4 @@
-# User story title: 
-
-Keep any other version here as well, e.g. Display current deals, Let user to click on "show-current-deals".
+# Login Feature
 
 ## Priority: High 
 Secure and simple authentication for users.
