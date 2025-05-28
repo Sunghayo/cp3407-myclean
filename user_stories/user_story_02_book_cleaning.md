@@ -1,4 +1,4 @@
-# User story title: Book Cleaning Service
+# Book Cleaning Service
 
 Other versions: "Schedule a cleaning", "Select service date/time", "Request home cleaning"
 
