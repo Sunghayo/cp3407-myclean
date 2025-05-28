@@ -1,4 +1,4 @@
-# User story title: In-app Payment
+# In-app Payment
 
 ## Priority: 10
 Secure payment system for user convenience.
