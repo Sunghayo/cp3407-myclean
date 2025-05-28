@@ -1,22 +1,22 @@
 ## Initial Backlog Ideas
 
-- **Login Feature** | Priority: High  
-  - As a user, I want to log into the app so that I can manage my bookings.
+- **Login Feature** | Priority: High | Estimate: 2 days  
+  - As a registered user, I want to securely log into the app using my email and password so that I can manage my dashboard, view past bookings, and manage future appointments.
 
-- **Book Cleaning** | Priority: High  
-  - As a customer, I want to schedule a cleaning service so that I can plan ahead.
+- **Book Cleaning** | Priority: High | Estimate: 2 days  
+  - As a customer, I want to schedule a cleaning session by selecting the date, time, and service type, so that my home is cleaned when it suits me best.
 
-- **Cleaner Sign-Up** | Priority: Medium  
-  - As a cleaner, I want to register to offer my services.
+- **Cleaner Sign-Up** | Priority: Medium | Estimate: 2 days  
+  - As a cleaner, I want to register my profile and availability so that customers can find and book me.
 
-- **Leave Review** | Priority: Medium  
-  - As a user, I want to rate a cleaner so that others can make informed decisions.
+- **Leave Review** | Priority: Medium | Estimate: 1 day  
+  - As a customer, I want to leave a star rating and review after a service so that I can provide feedback and help others.
 
-- **Notifications** | Priority: Low  
-  - As a user, I want to receive reminders for my bookings.
+- **Notifications** | Priority: Low | Estimate: 1 day  
+  - As a user, I want to receive automatic notifications for bookings and updates so that I’m always informed.
 
-- **In-app Payment** | Priority: High
-  - As a user, I want to pay for cleaning services directly through the app so that I don’t have to handle cash transactions.
+- **In-app Payment** | Priority: High | Estimate: 3 days  
+  - As a customer, I want to pay for cleaning services directly in the app using card or PayNow so that I don’t need to handle cash.
 
-- **Cleaner Availability Scheduling** | Priority: Medium
+- **Cleaner Availability Scheduling** | Priority: Medium | Estimate: 2 days  
   - As a cleaner, I want to set my available time slots so that customers can only book when I am free.
