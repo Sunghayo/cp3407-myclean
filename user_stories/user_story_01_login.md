@@ -1,34 +1,29 @@
-Create more md files like this one as needed. Place them into the same folder 
-as this [user_stories folder](./)
-
-# User story title: e.g. Show current deals
+# User story title: 
 
 Keep any other version here as well, e.g. Display current deals, Let user to click on "show-current-deals".
 
-## Priority: 10 (e.g. latest for iteration-1)
-Any notes on priority go here. 
-Note you may have different priorities at different stages of you project.
-Again, keep all changes here for marking.
+## Priority: High 
+Secure and simple authentication for users.
 
-## Estimation: e.g. 2 days
-Any notes on estimation go here. Keep your planning poker game numbers. For example
-* Bob: 1 day (e.g. estimated before iteration-1)
-* Lisa: 2 days
-* Jack: 3 days
+## Estimation: 2 days
+* Sungha: 2 days
+* Mi-La: 2 days
+* Yuyang: 2 days
 
 ## Assumptions (if any):
-
+- Users already have a registered email/password.
+- Basic authentication is sufficient for MVP.
+  
 ## Description: e.g. The web page will show current deals to Orion's orbits users
-You need to keep all versions here so that your instructor/marker can see your changes easily. 
-In a real project, your older versions could be viewed via commits.
+Description-v1: As a registered user, I want to securely log into the app using my email and password so that I can access my personal dashboard, view past bookings, and manage future appointments. The login process should validate user credentials, provide error messages for invalid attempts, and support session management for keeping users signed in securely.
 
-Description-v1: e.g. The web site will show current deals to Orion's orbits users
+Description-v2: 
 
 ## Tasks, see chapter 4.
 
-1. Task 1, Estimation XX days
-2. ...
-
+1. Design login UI with email & password fields: 0.5 day
+2. Implement authentication logic (backend): 1 day
+3. Set up session handling and redirection: 0.5 day
 
 # UI Design:
 * (New, not in the textbook) 
