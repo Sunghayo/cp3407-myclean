@@ -14,6 +14,21 @@ The following is the list of items, which are required to be completed.
 3. Yuyang Chao
 
 
+## Project Overview
+MyClean is an online platform designed to help users conveniently book cleaning services. The platform includes user authentication, booking functionality, and secure in-app payment.
+
+## Project Goals
+- Build a working web application with full login, booking, and payment features.
+- Apply Agile iteration through 2 cycles (iteration 1 & 2).
+- Use GitHub project board to manage user stories and progress.
+
+## Team Roles
+ Login feature, GitHub setup, In-app payment, UI/UX coordination, Booking system, deployment setup
+ 
+- **Sungha Hwang (SH)**: GitHub setup, In-app payment, Booking system, deployment setup
+- **Mi-La Ang (ML)**: Login feature, Booking system
+- **Yuyang Chao (YC)**: UI/UX coordination
+
 
 # Project planning BEFORE iteration-1, (see chapters 1-3)
 Checklist/TODOs: 
