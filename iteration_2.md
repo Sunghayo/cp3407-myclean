@@ -5,7 +5,7 @@
 
 ---
 
-### ✅ Checklist:
+###  Checklist:
 - GitHub entry timestamps ✔️  
 - User stories are correct: see p39 ✔️  
 
@@ -17,7 +17,7 @@
 
 ---
 
-### 📝 User stories or tasks (see chapter 4):
+### User stories or tasks (see chapter 4):
 1. **Cleaner Sign-Up**, Priority: Medium, 2 days  
 2. **Leave Review**, Priority: Medium, 1 day  
 3. **Notifications**, Priority: Low, 1 day  
