@@ -18,9 +18,18 @@ The following is the list of items, which are required to be completed.
 MyClean is an online platform designed to help users conveniently book cleaning services. The platform includes user authentication, booking functionality, and secure in-app payment.
 
 ## Project Goals
+
 - Build a working web application with full login, booking, and payment features.
 - Apply Agile iteration through 2 cycles (iteration 1 & 2).
 - Use GitHub project board to manage user stories and progress.
+- Ensure mobile responsiveness and accessibility for diverse users.
+- Use HTML, CSS, JavaScript (or a framework like React), and Python/Flask for backend APIs.
+- Implement secure user authentication and encrypted payment flow.
+- Test the application across multiple devices and browsers.
+- Collaborate efficiently using GitHub issues, commits, and pull requests.
+- Reflect on each iteration with sprint review and retrospective meetings.
+
+
 
 ## Team Roles
 | Team Member           | Role                                  | Responsibilities                                                                                                                                        |
