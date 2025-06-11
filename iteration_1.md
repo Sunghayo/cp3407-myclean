@@ -29,7 +29,7 @@ Login Feature (SH, ML, YC), date completed: @ June
 Book Cleaning (SH, ML, YC) date completed: @ June  
 In-app Payment (SH, ML, YC) date completed: @ June  
 
-Burn Down for iteration-1 (see chapter 4):  
+### Burn Down for iteration-1 (see chapter 4):  
 Update this at least once per week
 4 weeks left, 7 days of estimated amount of work  
 
