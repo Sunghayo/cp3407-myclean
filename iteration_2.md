@@ -1,29 +1,51 @@
-# Actual iteration-2 board, (see chapters 3 and 4), add your start and end dates 
+## Actual iteration-2 board (see chapters 3 and 4)
 
-Checklist: 
-1. github entry timestamps
-2. User stories are correct: see p39
+**Start Date:** 18 July 2025  
+**End Date:** 24 July 2025  
 
-* Assumed Velocity FROM iteration-1: ?? 
-* Number of developers: ??
-* Total estimated amount of work: YY days
+---
 
-User stories or tasks (see chapter 4):
-1. [user story or task title](./user_stories/user_story_01_title.md), priority XX, YY days 
-2. ...
+### ✅ Checklist:
+- GitHub entry timestamps ✔️  
+- User stories are correct: see p39 ✔️  
 
-In progress:
-* Task-2 (developer name or initials), date started
-* ...
+---
 
-Completed:
-* Task-3 (developer name or initials), date completed
-* ...
+- **Assumed Velocity:** 0.7  
+- **Number of Developers:** 3  
+- **Total Estimated Amount of Work:** 6 days  
+
+---
+
+### 📝 User stories or tasks (see chapter 4):
+1. **Cleaner Sign-Up**, Priority: Medium, 2 days  
+2. **Leave Review**, Priority: Medium, 1 day  
+3. **Notifications**, Priority: Low, 1 day  
+4. **Cleaner Availability Scheduling**, Priority: Medium, 2 days  
+
+---
+
+### In Progress:
+- Cleaner Sign-Up (SH, ML), date started: 18 July  
+- Leave Review (ML), date started: 18 July  
+- Notifications (SH), date started: 18 July  
+- Cleaner Availability Scheduling (SH, YC), date started: 18 July  
+
+---
+
+### Completed:
+- Cleaner Sign-Up (SH, ML), date completed: @ July  
+- Leave Review (ML), date completed: @ July  
+- Notifications (SH), date completed: @ July  
+- Cleaner Availability Scheduling (SH, YC), date completed: @ July  
+
+---
 
 ### Burn Down for iteration-2 (see chapter 4):
-Update this at least once per week
-* 4 weeks left, xx days of estimated amount of work 
-* 2 weeks left, xx days
-* 1 weeks left, xx days
-* 0 weeks left, xx days
-* Actual Velocity: ?? 
+_Update this at least once per week_
+
+- 4 weeks left: 6 days of estimated amount of work  
+- 2 weeks left: 3 days  
+- 1 week left: 1 day  
+- 0 weeks left: 0 days  
+- **Actual Velocity:** 6 days / 4 weeks = **1.5 days/week**
