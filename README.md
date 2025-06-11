@@ -23,11 +23,11 @@ MyClean is an online platform designed to help users conveniently book cleaning 
 - Use GitHub project board to manage user stories and progress.
 
 ## Team Roles
- Login feature, GitHub setup, In-app payment, UI/UX coordination, Booking system, deployment setup
- 
-- **Sungha Hwang (SH)**: GitHub setup, In-app payment, Booking system, deployment setup
-- **Mi-La Ang (ML)**: Login feature, Booking system
-- **Yuyang Chao (YC)**: UI/UX coordination
+| Team Member           | Role                                  | Responsibilities                                                                                                                                        |
+| --------------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Sungha Hwang (SH)** | 🛠 GitHub Setup & Backend Development | - Set up GitHub repository and Project board<br>- Develop backend logic for login, booking, and payment<br>- Manage API routes and database integration |
+| **Mi-La Ang (ML)**    | 💻 Frontend Development               | - Build user-facing components<br>- Integrate frontend with backend APIs<br>- Implement login and booking UI                                            |
+| **Yuyang Chao (YC)**  | 🎨 UI/UX Coordination                 | - Design UI layout and user flow (e.g. using Figma)<br>- Ensure consistent and user-friendly interface<br>- Support frontend with layout references     |
 
 
 # Project planning BEFORE iteration-1, (see chapters 1-3)
