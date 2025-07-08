@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MyClean - Book a Cleaning</title>
+  <title>MyClean - My Bookings</title>
   <style>
     body {
       font-family: 'Helvetica Neue', sans-serif;
@@ -27,7 +27,7 @@
 
     .container {
       margin-top: 40px;
-      max-width: 400px;
+      max-width: 600px;
       width: 90%;
       background-color: #fff;
       padding: 30px;
@@ -41,32 +41,17 @@
       color: #333;
     }
 
-    label {
-      font-weight: 600;
-      color: #444;
-      display: block;
-      margin-top: 15px;
+    ul {
+      list-style-type: none;
+      padding: 0;
     }
 
-    input, select, button {
-      width: 100%;
-      padding: 10px;
-      margin-top: 8px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
+    li {
+      background-color: #f1f1f1;
+      margin-bottom: 12px;
+      padding: 15px;
+      border-radius: 8px;
       font-size: 16px;
-    }
-
-    button {
-      background-color: #2b3a42;
-      color: white;
-      margin-top: 24px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #1d272d;
     }
 
     .link-group {
@@ -84,43 +69,20 @@
     .link-group a:hover {
       text-decoration: underline;
     }
-
-    #message {
-      margin-top: 15px;
-      text-align: center;
-      font-weight: 500;
-      color: #2b3a42;
-    }
   </style>
 </head>
 <body>
 
-  <header>MyClean Booking</header>
+  <header>MyClean - My Bookings</header>
 
   <div class="container">
-    <h2>Book a Cleaning Service</h2>
-
-    <form id="booking-form">
-      <label for="date">Date:</label>
-      <input type="date" id="date" required />
-
-      <label for="time">Time:</label>
-      <input type="time" id="time" required />
-
-      <label for="service">Service Type:</label>
-      <select id="service" required>
-        <option value="Standard">Standard Cleaning</option>
-        <option value="Deep">Deep Cleaning</option>
-        <option value="MoveOut">Move-out Cleaning</option>
-      </select>
-
-      <button type="submit">Submit Booking</button>
-    </form>
-
-    <p id="message"></p>
+    <h2>📋 My Cleaning Bookings</h2>
+    <ul id="booking-list">
+      <li>Loading your bookings...</li>
+    </ul>
 
     <div class="link-group">
-      <a href="booking_view.html">📋 View My Bookings</a>
+      <a href="booking.html">← Back to Booking</a>
       |
       <a href="#" onclick="logout()">🚪 Logout</a>
     </div>
@@ -132,6 +94,7 @@
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 
   <script>
+    // Firebase configuration
     const firebaseConfig = {
       apiKey: "AIzaSyA5WfQ8OQNmbbOBSjVH_fmdai7tDRxKbqo",
       authDomain: "jcuclean.firebaseapp.com",
@@ -143,39 +106,43 @@
       databaseURL: "https://jcuclean-default-rtdb.asia-southeast1.firebasedatabase.app"
     };
 
+    // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
     const db = firebase.database();
 
-    // Login status
+    const bookingList = document.getElementById("booking-list");
+
+    // Check login state and fetch bookings
     auth.onAuthStateChanged(user => {
       if (!user) {
         window.location.href = "login.html";
+        return;
       }
-    });
 
-    // Submit booking
-    document.getElementById("booking-form").addEventListener("submit", function (e) {
-      e.preventDefault();
-      const date = document.getElementById("date").value;
-      const time = document.getElementById("time").value;
-      const service = document.getElementById("service").value;
-      const user = auth.currentUser;
+      // Load user's bookings from Firebase
+      db.ref("bookings/" + user.uid).once("value").then(snapshot => {
+        const data = snapshot.val();
+        bookingList.innerHTML = "";
 
-      db.ref("bookings/" + user.uid).push({
-        date: date,
-        time: time,
-        service: service,
-        timestamp: Date.now()
-      }).then(() => {
-        document.getElementById("message").innerText = "✅ Booking submitted successfully!";
-        document.getElementById("booking-form").reset();
-      }).catch((error) => {
-        document.getElementById("message").innerText = "❌ " + error.message;
+        if (!data) {
+          bookingList.innerHTML = "<li>❗ You have no bookings yet.</li>";
+          return;
+        }
+
+        const bookings = Object.values(data).sort((a, b) => b.timestamp - a.timestamp);
+
+        bookings.forEach((booking, index) => {
+          const li = document.createElement("li");
+          li.textContent = `${booking.date} at ${booking.time} — ${booking.service} Cleaning`;
+          bookingList.appendChild(li);
+        });
+      }).catch(error => {
+        bookingList.innerHTML = "<li>❌ Failed to load bookings: " + error.message + "</li>";
       });
     });
 
-    // logout
+    // Logout
     function logout() {
       auth.signOut().then(() => {
         window.location.href = "login.html";
