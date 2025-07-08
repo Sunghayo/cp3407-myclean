@@ -1,20 +1,96 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Sign Up</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MyClean - Sign Up</title>
+  <style>
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      width: 100%;
+      background-color: white;
+      border-bottom: 1px solid #ddd;
+      padding: 20px 0;
+      text-align: center;
+      font-weight: bold;
+      font-size: 24px;
+    }
+
+    .container {
+      margin-top: 40px;
+      max-width: 400px;
+      width: 90%;
+      background-color: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 24px;
+      color: #333;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      background-color: #2b3a42;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #1d272d;
+    }
+
+    #message {
+      margin-top: 15px;
+      text-align: center;
+      font-weight: 500;
+      color: #2b3a42;
+    }
+  </style>
 </head>
 <body>
-  <h2>Sign Up</h2>
-  <form id="signup-form">
-    <input type="email" id="email" placeholder="Email" required><br><br>
-    <input type="password" id="password" placeholder="Password" required><br><br>
-    <button type="submit">Sign Up</button>
-  </form>
 
-  <p id="message"></p>
+  <header>MyClean Sign Up</header>
 
-  <!-- ✅ Firebase CDN Version -->
+  <div class="container">
+    <h2>Sign Up</h2>
+    <form id="signup-form">
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <button type="submit">Sign Up</button>
+    </form>
+
+    <p id="message"></p>
+  </div>
+
+  <!-- ✅ Firebase CDN ver -->
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
 
