@@ -1,33 +1,132 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>MyClean - Booking</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MyClean - Book a Cleaning</title>
+  <style>
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fafafa;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      width: 100%;
+      background-color: white;
+      border-bottom: 1px solid #ddd;
+      padding: 20px 0;
+      text-align: center;
+      font-weight: bold;
+      font-size: 24px;
+    }
+
+    .container {
+      margin-top: 40px;
+      max-width: 400px;
+      width: 90%;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 24px;
+      color: #333;
+    }
+
+    label {
+      font-weight: 600;
+      color: #444;
+      display: block;
+      margin-top: 15px;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #2b3a42;
+      color: white;
+      margin-top: 24px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #1d272d;
+    }
+
+    .link-group {
+      margin-top: 24px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .link-group a {
+      color: #2b3a42;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    .link-group a:hover {
+      text-decoration: underline;
+    }
+
+    #message {
+      margin-top: 15px;
+      text-align: center;
+      font-weight: 500;
+      color: #2b3a42;
+    }
+  </style>
 </head>
 <body>
-  <h2>Book a Cleaning Service</h2>
 
-  <form id="booking-form">
-    <label>Date:</label><br>
-    <input type="date" id="date" required><br><br>
+  <header>MyClean Booking</header>
 
-    <label>Time:</label><br>
-    <input type="time" id="time" required><br><br>
+  <div class="container">
+    <h2>Book a Cleaning Service</h2>
 
-    <label>Service Type:</label><br>
-    <select id="service" required>
-      <option value="Standard">Standard Cleaning</option>
-      <option value="Deep">Deep Cleaning</option>
-      <option value="MoveOut">Move-out Cleaning</option>
-    </select><br><br>
+    <form id="booking-form">
+      <label for="date">Date:</label>
+      <input type="date" id="date" required />
 
-    <button type="submit">Submit Booking</button>
-  </form>
+      <label for="time">Time:</label>
+      <input type="time" id="time" required />
 
-  <p id="message"></p>
-  <p><a href="login.html" onclick="logout()">Logout</a></p>
+      <label for="service">Service Type:</label>
+      <select id="service" required>
+        <option value="Standard">Standard Cleaning</option>
+        <option value="Deep">Deep Cleaning</option>
+        <option value="MoveOut">Move-out Cleaning</option>
+      </select>
 
-  <!-- ✅ Firebase SDKs -->
+      <button type="submit">Submit Booking</button>
+    </form>
+
+    <p id="message"></p>
+
+    <div class="link-group">
+      <a href="booking_view.html">📋 View My Bookings</a>
+      |
+      <a href="#" onclick="logout()">🚪 Logout</a>
+    </div>
+  </div>
+
+  <!-- Firebase SDKs -->
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
@@ -44,7 +143,6 @@
       databaseURL: "https://jcuclean-default-rtdb.asia-southeast1.firebasedatabase.app"
     };
 
-    // Firebase reset
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
     const db = firebase.database();
@@ -56,7 +154,7 @@
       }
     });
 
-    // Submit Booking 
+    // Submit booking
     document.getElementById("booking-form").addEventListener("submit", function (e) {
       e.preventDefault();
       const date = document.getElementById("date").value;
@@ -76,10 +174,12 @@
         document.getElementById("message").innerText = "❌ " + error.message;
       });
     });
-    <p><a href="booking_view.html">View My Bookings</a></p>
+
     // logout
     function logout() {
-      auth.signOut();
+      auth.signOut().then(() => {
+        window.location.href = "login.html";
+      });
     }
   </script>
 </body>
