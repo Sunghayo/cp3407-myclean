@@ -49,6 +49,9 @@
     li {
       padding: 10px;
       border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     .link-group {
@@ -64,6 +67,15 @@
 
     .link-group a:hover {
       text-decoration: underline;
+    }
+
+    .delete-btn {
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 4px 8px;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -99,20 +111,43 @@
         window.location.href = "login.html";
       } else {
         const list = document.getElementById("booking-list");
-        db.ref("bookings/" + user.uid).once("value").then(snapshot => {
+        const userRef = db.ref("bookings/" + user.uid);
+
+        userRef.once("value").then(snapshot => {
           if (!snapshot.exists()) {
             list.innerHTML = "<li>No bookings found.</li>";
           } else {
             snapshot.forEach(child => {
               const { date, time, service } = child.val();
+              const bookingId = child.key;
+
               const li = document.createElement("li");
-              li.textContent = `${service} - ${date} at ${time}`;
+              li.innerHTML = `
+                ${service} - ${date} at ${time}
+                <button class="delete-btn" onclick="deleteBooking('${user.uid}', '${bookingId}', this)">❌</button>
+              `;
               list.appendChild(li);
             });
           }
         });
       }
     });
+
+    function deleteBooking(uid, bookingId, buttonElement) {
+      if (confirm("Are you sure you want to delete this booking?")) {
+        const ref = firebase.database().ref("bookings/" + uid + "/" + bookingId);
+        ref.remove()
+          .then(() => {
+            alert("Booking deleted successfully.");
+            buttonElement.parentElement.remove();
+          })
+          .catch(error => {
+            console.error("Delete failed:", error);
+            alert("An error occurred while deleting the booking.");
+          });
+      }
+    }
+}
 
     function logout() {
       auth.signOut().then(() => {
