@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MyClean - My Bookings</title>
+  <title>MyClean - Book a Cleaning</title>
   <style>
     body {
       font-family: 'Helvetica Neue', sans-serif;
@@ -27,7 +27,7 @@
 
     .container {
       margin-top: 40px;
-      max-width: 600px;
+      max-width: 400px;
       width: 90%;
       background-color: #fff;
       padding: 30px;
@@ -41,17 +41,32 @@
       color: #333;
     }
 
-    ul {
-      list-style-type: none;
-      padding: 0;
+    label {
+      font-weight: 600;
+      color: #444;
+      display: block;
+      margin-top: 15px;
     }
 
-    li {
-      background-color: #f1f1f1;
-      margin-bottom: 12px;
-      padding: 15px;
-      border-radius: 8px;
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
       font-size: 16px;
+    }
+
+    button {
+      background-color: #2b3a42;
+      color: white;
+      margin-top: 24px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #1d272d;
     }
 
     .link-group {
@@ -69,20 +84,43 @@
     .link-group a:hover {
       text-decoration: underline;
     }
+
+    #message {
+      margin-top: 15px;
+      text-align: center;
+      font-weight: 500;
+      color: #2b3a42;
+    }
   </style>
 </head>
 <body>
 
-  <header>MyClean - My Bookings</header>
+  <header>MyClean Booking</header>
 
   <div class="container">
-    <h2>📋 My Cleaning Bookings</h2>
-    <ul id="booking-list">
-      <li>Loading your bookings...</li>
-    </ul>
+    <h2>Book a Cleaning Service</h2>
+
+    <form id="booking-form">
+      <label for="date">Date:</label>
+      <input type="date" id="date" required />
+
+      <label for="time">Time:</label>
+      <input type="time" id="time" required />
+
+      <label for="service">Service Type:</label>
+      <select id="service" required>
+        <option value="Standard">Standard Cleaning</option>
+        <option value="Deep">Deep Cleaning</option>
+        <option value="MoveOut">Move-out Cleaning</option>
+      </select>
+
+      <button type="submit">Proceed to Payment</button>
+    </form>
+
+    <p id="message"></p>
 
     <div class="link-group">
-      <a href="booking.html">← Back to Booking</a>
+      <a href="booking_view.html">📋 View My Bookings</a>
       |
       <a href="#" onclick="logout()">🚪 Logout</a>
     </div>
@@ -93,8 +131,10 @@
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 
+  <!-- Stripe.js -->
+  <script src="https://js.stripe.com/v3/"></script>
+
   <script>
-    // Firebase configuration
     const firebaseConfig = {
       apiKey: "AIzaSyA5WfQ8OQNmbbOBSjVH_fmdai7tDRxKbqo",
       authDomain: "jcuclean.firebaseapp.com",
@@ -106,43 +146,52 @@
       databaseURL: "https://jcuclean-default-rtdb.asia-southeast1.firebasedatabase.app"
     };
 
-    // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
     const db = firebase.database();
 
-    const bookingList = document.getElementById("booking-list");
+    const stripe = Stripe("pk_test_51RiXVN4Ez787E9pYt9RaWomxXArD0nr9CiRkshIw78KnLp8AcVUF9sHldB1T0aGzRpmGDpLNVjMgzLim4vTNzWdd00Bq2qvBy3");
 
-    // Check login state and fetch bookings
     auth.onAuthStateChanged(user => {
       if (!user) {
         window.location.href = "login.html";
-        return;
       }
-
-      // Load user's bookings from Firebase
-      db.ref("bookings/" + user.uid).once("value").then(snapshot => {
-        const data = snapshot.val();
-        bookingList.innerHTML = "";
-
-        if (!data) {
-          bookingList.innerHTML = "<li>❗ You have no bookings yet.</li>";
-          return;
-        }
-
-        const bookings = Object.values(data).sort((a, b) => b.timestamp - a.timestamp);
-
-        bookings.forEach((booking, index) => {
-          const li = document.createElement("li");
-          li.textContent = `${booking.date} at ${booking.time} — ${booking.service} Cleaning`;
-          bookingList.appendChild(li);
-        });
-      }).catch(error => {
-        bookingList.innerHTML = "<li>❌ Failed to load bookings: " + error.message + "</li>";
-      });
     });
 
-    // Logout
+    document.getElementById("booking-form").addEventListener("submit", async function (e) {
+      e.preventDefault();
+      const date = document.getElementById("date").value;
+      const time = document.getElementById("time").value;
+      const service = document.getElementById("service").value;
+      const user = auth.currentUser;
+
+      const prices = {
+        Standard: 3000,
+        Deep: 4500,
+        MoveOut: 6000
+      };
+
+      const amount = prices[service];
+
+      const { error } = await stripe.redirectToCheckout({
+        lineItems: [{ price_data: {
+          currency: 'usd',
+          product_data: {
+            name: service + ' Cleaning'
+          },
+          unit_amount: amount * 100
+        }, quantity: 1 }],
+        mode: 'payment',
+        successUrl: window.location.origin + '/success.html',
+        cancelUrl: window.location.origin + '/booking.html',
+        customerEmail: user.email
+      });
+
+      if (error) {
+        document.getElementById("message").innerText = "❌ Payment failed: " + error.message;
+      }
+    });
+
     function logout() {
       auth.signOut().then(() => {
         window.location.href = "login.html";
