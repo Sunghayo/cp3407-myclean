@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>MyClean Admin - All Bookings</title>
+  <style>
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      background-color: #f7f7f7;
+      padding: 40px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .booking {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 15px 20px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .booking strong {
+      color: #333;
+    }
+
+    button {
+      background-color: #e74c3c;
+      color: #fff;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      float: right;
+    }
+
+    button:hover {
+      background-color: #c0392b;
+    }
+
+    .logout {
+      text-align: center;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <h2>📋 All Bookings (Admin View)</h2>
+  <div id="booking-list"></div>
+  <div class="logout">
+    <button onclick="logout()">🚪 Logout</button>
+  </div>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyA5WfQ8OQNmbbOBSjVH_fmdai7tDRxKbqo",
+      authDomain: "jcuclean.firebaseapp.com",
+      projectId: "jcuclean",
+      storageBucket: "jcuclean.firebasestorage.app",
+      messagingSenderId: "573599830185",
+      appId: "1:573599830185:web:ecbb695c30a78dae4599b8",
+      measurementId: "G-V0QM9R1SGQ",
+      databaseURL: "https://jcuclean-default-rtdb.asia-southeast1.firebasedatabase.app"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.database();
+
+    auth.onAuthStateChanged(user => {
+      if (!user) {
+        window.location.href = "login.html";
+        return;
+      }
+
+      loadAllBookings();
+    });
+
+    function loadAllBookings() {
+      const bookingList = document.getElementById("booking-list");
+      db.ref("bookings").once("value", snapshot => {
+        bookingList.innerHTML = "";
+        snapshot.forEach(userSnapshot => {
+          const uid = userSnapshot.key;
+          userSnapshot.forEach(bookingSnapshot => {
+            const booking = bookingSnapshot.val();
+            const key = bookingSnapshot.key;
+
+            const div = document.createElement("div");
+            div.className = "booking";
+            div.innerHTML = `
+              <strong>User:</strong> ${uid}<br>
+              <strong>Date:</strong> ${booking.date}<br>
+              <strong>Time:</strong> ${booking.time}<br>
+              <strong>Service:</strong> ${booking.service}
+              <button onclick="deleteBooking('${uid}', '${key}')">Delete</button>
+            `;
+            bookingList.appendChild(div);
+          });
+        });
+
+        if (bookingList.innerHTML === "") {
+          bookingList.innerHTML = "<p>No bookings found.</p>";
+        }
+      });
+    }
+
+    function deleteBooking(uid, key) {
+      if (confirm("Are you sure you want to delete this booking?")) {
+        db.ref("bookings/" + uid + "/" + key).remove().then(() => {
+          alert("Booking deleted.");
+          loadAllBookings();
+        });
+      }
+    }
+
+    function logout() {
+      auth.signOut().then(() => {
+        window.location.href = "login.html";
+      });
+    }
+  </script>
+</body>
+</html>
