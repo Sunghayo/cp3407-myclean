@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MyClean - My Bookings</title>
+  <style>
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fafafa;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      width: 100%;
+      background-color: white;
+      border-bottom: 1px solid #ddd;
+      padding: 20px 0;
+      text-align: center;
+      font-weight: bold;
+      font-size: 24px;
+    }
+
+    .container {
+      margin-top: 40px;
+      max-width: 600px;
+      width: 90%;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 24px;
+      color: #333;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      background-color: #f1f1f1;
+      margin-bottom: 12px;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .link-group {
+      margin-top: 24px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .link-group a {
+      color: #2b3a42;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    .link-group a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <header>MyClean - My Bookings</header>
+
+  <div class="container">
+    <h2>📋 My Cleaning Bookings</h2>
+    <ul id="booking-list">
+      <li>Loading your bookings...</li>
+    </ul>
+
+    <div class="link-group">
+      <a href="booking.html">← Back to Booking</a>
+      |
+      <a href="#" onclick="logout()">🚪 Logout</a>
+    </div>
+  </div>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyA5WfQ8OQNmbbOBSjVH_fmdai7tDRxKbqo",
+      authDomain: "jcuclean.firebaseapp.com",
+      projectId: "jcuclean",
+      storageBucket: "jcuclean.firebasestorage.app",
+      messagingSenderId: "573599830185",
+      appId: "1:573599830185:web:ecbb695c30a78dae4599b8",
+      measurementId: "G-V0QM9R1SGQ",
+      databaseURL: "https://jcuclean-default-rtdb.asia-southeast1.firebasedatabase.app"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.database();
+
+    const bookingList = document.getElementById("booking-list");
+
+    auth.onAuthStateChanged(user => {
+      if (!user) {
+        window.location.href = "login.html";
+        return;
+      }
+
+      // Firebase reservation
+      db.ref("bookings/" + user.uid).once("value").then(snapshot => {
+        const data = snapshot.val();
+        bookingList.innerHTML = "";
+
+        if (!data) {
+          bookingList.innerHTML = "<li>❗ You have no bookings yet.</li>";
+          return;
+        }
+
+        const bookings = Object.values(data).sort((a, b) => b.timestamp - a.timestamp);
+
+        bookings.forEach((booking, index) => {
+          const li = document.createElement("li");
+          li.textContent = `${booking.date} at ${booking.time} — ${booking.service} Cleaning`;
+          bookingList.appendChild(li);
+        });
+      }).catch(error => {
+        bookingList.innerHTML = "<li>❌ Failed to load bookings: " + error.message + "</li>";
+      });
+    });
+
+    function logout() {
+      auth.signOut().then(() => {
+        window.location.href = "login.html";
+      });
+    }
+  </script>
+</body>
+</html>
