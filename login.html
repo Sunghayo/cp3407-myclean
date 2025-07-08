@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>MyClean - Login</title>
+</head>
+<body>
+  <h2>Login</h2>
+  <form id="login-form">
+    <input type="email" id="email" placeholder="Email" required><br><br>
+    <input type="password" id="password" placeholder="Password" required><br><br>
+    <button type="submit">Login</button>
+  </form>
+
+  <p id="message"></p>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
+
+  <script>
+    // Firebase Setting
+    const firebaseConfig = {
+      apiKey: "AIzaSyA5WfQ8OQNmbbOBSjVH_fmdai7tDRxKbqo",
+      authDomain: "jcuclean.firebaseapp.com",
+      projectId: "jcuclean",
+      storageBucket: "jcuclean.firebasestorage.app",
+      messagingSenderId: "573599830185",
+      appId: "1:573599830185:web:ecbb695c30a78dae4599b8",
+      measurementId: "G-V0QM9R1SGQ"
+    };
+
+    // Firebase reset
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    // Login
+    const loginForm = document.getElementById("login-form");
+    loginForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      auth.signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          document.getElementById("message").innerText = "✅ Login successful!";
+          // Go to login page if success
+          window.location.href = "booking.html";
+        })
+        .catch((error) => {
+          document.getElementById("message").innerText = "❌ Error: " + error.message;
+        });
+    });
+  </script>
+</body>
+</html>
