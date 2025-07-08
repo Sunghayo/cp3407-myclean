@@ -90,9 +90,9 @@
     <p id="message"></p>
   </div>
 
-  <!-- Firebase SDKs -->
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 
   <script>
     // Firebase Setting
@@ -120,7 +120,7 @@
       auth.signInWithEmailAndPassword(email, password)
         .then((userCredential) => {
           document.getElementById("message").innerText = "✅ Login successful!";
-          // Go to login page if success
+          // Go to booking page if success
           window.location.href = "booking.html";
         })
         .catch((error) => {
