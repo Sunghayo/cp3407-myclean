@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>MyClean - Booking</title>
+</head>
+<body>
+  <h2>Book a Cleaning Service</h2>
+
+  <form id="booking-form">
+    <label>Date:</label><br>
+    <input type="date" id="date" required><br><br>
+
+    <label>Time:</label><br>
+    <input type="time" id="time" required><br><br>
+
+    <label>Service Type:</label><br>
+    <select id="service" required>
+      <option value="Standard">Standard Cleaning</option>
+      <option value="Deep">Deep Cleaning</option>
+      <option value="MoveOut">Move-out Cleaning</option>
+    </select><br><br>
+
+    <button type="submit">Submit Booking</button>
+  </form>
+
+  <p id="message"></p>
+  <p><a href="login.html" onclick="logout()">Logout</a></p>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyA5WfQ8OQNmbbOBSjVH_fmdai7tDRxKbqo",
+      authDomain: "jcuclean.firebaseapp.com",
+      projectId: "jcuclean",
+      storageBucket: "jcuclean.firebasestorage.app",
+      messagingSenderId: "573599830185",
+      appId: "1:573599830185:web:ecbb695c30a78dae4599b8",
+      measurementId: "G-V0QM9R1SGQ",
+      databaseURL: "https://jcuclean-default-rtdb.asia-southeast1.firebasedatabase.app"
+    };
+
+    // Firebase reset
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.database();
+
+    // Login check
+    auth.onAuthStateChanged(user => {
+      if (!user) {
+        window.location.href = "login.html";
+      }
+    });
+
+    // Submit booking
+    document.getElementById("booking-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const date = document.getElementById("date").value;
+      const time = document.getElementById("time").value;
+      const service = document.getElementById("service").value;
+      const user = auth.currentUser;
+
+      db.ref("bookings/" + user.uid).push({
+        date: date,
+        time: time,
+        service: service,
+        timestamp: Date.now()
+      }).then(() => {
+        document.getElementById("message").innerText = "✅ Booking submitted successfully!";
+        document.getElementById("booking-form").reset();
+      }).catch((error) => {
+        document.getElementById("message").innerText = "❌ " + error.message;
+      });
+    });
+
+    // Logout
+    function logout() {
+      auth.signOut();
+    }
+  </script>
+</body>
+</html>
