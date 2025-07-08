@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>MyClean - Sign Up</title>
+  <title>Sign Up</title>
 </head>
 <body>
   <h2>Sign Up</h2>
@@ -14,7 +14,7 @@
 
   <p id="message"></p>
 
-  <!-- Firebase SDKs -->
+  <!-- Firebase CDN Version -->
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
 
@@ -30,23 +30,25 @@
       measurementId: "G-V0QM9R1SGQ"
     };
 
+    // firebase Reset
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
 
-    // Sign up Setting
-    const signupForm = document.getElementById("signup-form");
-    signupForm.addEventListener("submit", function (e) {
+    // Register 
+    document.getElementById("signup-form").addEventListener("submit", function (e) {
       e.preventDefault();
+
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
 
       auth.createUserWithEmailAndPassword(email, password)
-        .then(() => {
+        .then((userCredential) => {
           document.getElementById("message").innerText = "✅ Sign up successful!";
+          // Login page redirection
           window.location.href = "login.html";
         })
         .catch((error) => {
-          document.getElementById("message").innerText = "❌ Error: " + error.message;
+          document.getElementById("message").innerText = "❌ " + error.message;
         });
     });
   </script>
