@@ -14,9 +14,9 @@
 
   <p id="message"></p>
 
-  <!-- Firebase SDKs -->
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
+  <!-- ✅ Firebase CDN -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
 
   <script>
     // Firebase Setting
@@ -30,22 +30,21 @@
       measurementId: "G-V0QM9R1SGQ"
     };
 
-    // Firebase reset
+    // Firebase Reset
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
 
-    // Login
-    const loginForm = document.getElementById("login-form");
-    loginForm.addEventListener("submit", function (e) {
+    // Login check
+    document.getElementById("login-form").addEventListener("submit", function (e) {
       e.preventDefault();
+
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
 
       auth.signInWithEmailAndPassword(email, password)
         .then((userCredential) => {
           document.getElementById("message").innerText = "✅ Login successful!";
-          // Go to login page if success
-          window.location.href = "booking.html";
+          window.location.href = "booking.html"; 
         })
         .catch((error) => {
           document.getElementById("message").innerText = "❌ Error: " + error.message;
