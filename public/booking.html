@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MyClean Booking</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MyClean - My Bookings</title>
   <style>
     body {
       font-family: 'Helvetica Neue', sans-serif;
@@ -27,7 +27,7 @@
 
     .container {
       margin-top: 40px;
-      max-width: 400px;
+      max-width: 600px;
       width: 90%;
       background-color: #fff;
       padding: 30px;
@@ -41,30 +41,17 @@
       color: #333;
     }
 
-    label {
-      display: block;
-      margin-top: 15px;
-      font-weight: 600;
+    ul {
+      list-style-type: none;
+      padding: 0;
     }
 
-    input, select, button {
-      width: 100%;
+    li {
       padding: 10px;
-      margin-top: 8px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 16px;
-    }
-
-    button {
-      background-color: #2b3a42;
-      color: white;
-      margin-top: 24px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #1d272d;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     .link-group {
@@ -82,45 +69,28 @@
       text-decoration: underline;
     }
 
-    #message {
-      margin-top: 10px;
-      text-align: center;
+    .delete-btn {
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 4px 8px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <header>MyClean Booking</header>
+  <header>MyClean - My Bookings</header>
   <div class="container">
-    <h2>Book a Cleaning Service</h2>
-    <form id="booking-form">
-      <label for="date">Date:</label>
-      <input type="date" id="date" required />
-
-      <label for="time">Time:</label>
-      <input type="time" id="time" required />
-
-      <label for="service">Service Type:</label>
-      <select id="service" required>
-        <option value="Standard">Standard Cleaning</option>
-        <option value="Deep">Deep Cleaning</option>
-        <option value="MoveOut">Move-out Cleaning</option>
-      </select>
-
-      <button type="submit">Proceed to Payment</button>
-    </form>
-
-    <p id="message"></p>
-
+    <h2>Your Booking History</h2>
+    <ul id="booking-list"></ul>
     <div class="link-group">
-      <a href="booking_view.html">📋 View My Bookings</a> |
+      <a href="booking.html">➕ Make Another Booking</a> |
       <a href="#" onclick="logout()">🚪 Logout</a>
     </div>
   </div>
 
-  <!-- Stripe -->
-  <script src="https://js.stripe.com/v3/"></script>
-
-  <!-- Firebase SDKs -->
+  <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
@@ -129,11 +99,6 @@
     const firebaseConfig = {
       apiKey: "AIzaSyA5WfQ8OQNmbbOBSjVH_fmdai7tDRxKbqo",
       authDomain: "jcuclean.firebaseapp.com",
-      projectId: "jcuclean",
-      storageBucket: "jcuclean.appspot.com",
-      messagingSenderId: "573599830185",
-      appId: "1:573599830185:web:ecbb695c30a78dae4599b8",
-      measurementId: "G-V0QM9R1SGQ",
       databaseURL: "https://jcuclean-default-rtdb.asia-southeast1.firebasedatabase.app"
     };
 
@@ -141,53 +106,53 @@
     const auth = firebase.auth();
     const db = firebase.database();
 
-    const stripe = Stripe("pk_test_51RiXVN4Ez787E9pYt9RaWomxXArD0nr9CiRkshIw78KnLp8AcVUF9sHldB1T0aGzRpmGDpLNVjMgzLim4vTNzWdd00Bq2qvBy3");
-
-    const priceMapping = {
-      "Standard": "price_1RiXkU4Ez787E9pY0XM62S3J",
-      "Deep": "price_1RiXko4Ez787E9pYxMVtxhuR",
-      "MoveOut": "price_1RiXlA4Ez787E9pY6MCpHAkZ"
-    };
-
     auth.onAuthStateChanged(user => {
-      if (!user) window.location.href = "login.html";
-    });
+      if (!user) {
+        window.location.href = "login.html";
+      } else {
+        const list = document.getElementById("booking-list");
+        const userRef = db.ref("bookings/" + user.uid);
 
-    document.getElementById("booking-form").addEventListener("submit", async (e) => {
-      e.preventDefault();
+        userRef.once("value").then(snapshot => {
+          if (!snapshot.exists()) {
+            list.innerHTML = "<li>No bookings found.</li>";
+          } else {
+            snapshot.forEach(child => {
+              const { date, time, service } = child.val();
+              const bookingId = child.key;
 
-      const date = document.getElementById("date").value;
-      const time = document.getElementById("time").value;
-      const service = document.getElementById("service").value;
-      const user = auth.currentUser;
-
-      const priceId = priceMapping[service];
-      if (!priceId) {
-        document.getElementById("message").innerText = "❌ Invalid service selection.";
-        return;
+              const li = document.createElement("li");
+              li.innerHTML = `
+                ${service} - ${date} at ${time}
+                <button class="delete-btn" onclick="deleteBooking('${user.uid}', '${bookingId}', this)">❌</button>
+              `;
+              list.appendChild(li);
+            });
+          }
+        });
       }
-
-      // Save booking to Firebase
-      await db.ref("bookings/" + user.uid).push({
-        date, time, service,
-        timestamp: Date.now()
-      });
-
-      // Redirect to Stripe Checkout
-      stripe.redirectToCheckout({
-        lineItems: [{ price: priceId, quantity: 1 }],
-        mode: "payment",
-        successUrl: window.location.origin + "/booking_view.html",
-        cancelUrl: window.location.href
-      }).then(result => {
-        if (result.error) {
-          document.getElementById("message").innerText = "❌ " + result.error.message;
-        }
-      });
     });
+
+    function deleteBooking(uid, bookingId, buttonElement) {
+      if (confirm("Are you sure you want to delete this booking?")) {
+        const ref = firebase.database().ref("bookings/" + uid + "/" + bookingId);
+        ref.remove()
+          .then(() => {
+            alert("Booking deleted successfully.");
+            buttonElement.parentElement.remove();
+          })
+          .catch(error => {
+            console.error("Delete failed:", error);
+            alert("An error occurred while deleting the booking.");
+          });
+      }
+    }
+}
 
     function logout() {
-      auth.signOut().then(() => window.location.href = "login.html");
+      auth.signOut().then(() => {
+        window.location.href = "login.html";
+      });
     }
   </script>
 </body>
