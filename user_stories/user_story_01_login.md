@@ -1,35 +1,34 @@
 # Login Feature
 
-## Priority: High 
+## Priority: High  
 Secure and simple authentication for users.
 
-## Estimation: 2 days
-* Sungha: 2 days
-* Mi-La: 2 days
-* Yuyang: 2 days
+## Estimation: 2 days  
+- **Sungha:** 2 days  
+- **Mi-La:** 2 days  
+- **Yu-Yang:** 2 days
 
-## Assumptions
-- Users already have a registered email/password.
+## Assumptions  
+- Users will register / login with email/password
 - Basic authentication is sufficient for MVP.
-  
-## Description:
-Description-v1: As a registered user, I want to securely log into the app using my email and password so that I can manage my dashboard, view past bookings, and manage future appointments.
 
-Description-v2: As a registered user, I want to securely log into the app using my email and password so that I can access my personal dashboard, view past bookings, and manage future appointments. The login process should validate user credentials, provide error messages for invalid attempts, and support session management for keeping users signed in securely.
+## Description  
+**v1:** As a registered user, I want to securely log into the app using my email and password so that I can manage my dashboard, view past bookings, and manage future appointments.  
 
-## Tasks
+**v2:** As a registered user, I want to securely log into the app using my email and password so that I can access my personal dashboard, view past bookings, and manage future appointments. The login process should validate user credentials, provide error messages for invalid attempts, and support session management for keeping users signed in securely.
 
-1. Design login UI with email & password fields: 0.5 day
-2. Implement authentication logic (backend): 1 day
-3. Set up session handling and redirection: 0.5 day
+## Tasks  
+Design login UI with email & password fields – 0.5 day  
+Implement authentication logic (backend) – 1 day  
+Set up session handling and redirection – 0.5 day  
 
-# UI Design:
-* (New, not in the textbook) 
-* Many user stories are connected to a User interface.
-* Insert a mockup design screenshot using any prototyping tools, e.g. [https://ninjamock.com/](https://ninjamock.com/)
+## UI Design (Mockup)  
+- Created using NinjaMock by Yu-Yang  
+- 🔗 [View Mockup](https://ninjamock.com/s/XRNN7Lx)
 
-# Completed:
-* (New, not in the textbook) 
-* Insert screenshots of completed. 
-* If you have multiple versions (changes between iteractions), show them all.
+## Completed  
+- ✅ All tasks were implemented by **Sungha (SH)**  
+- ✅ Below are screenshots of completed register/login feature:
 
+- <img width="1844" height="933" alt="스크린샷 2025-07-23 04 03 20" src="https://github.com/user-attachments/assets/54c099f5-f02c-4d4d-87ea-1fa5ef816ced" />
+- <img width="1099" height="804" alt="스크린샷 2025-07-23 04 03 54" src="https://github.com/user-attachments/assets/1090073e-2242-4fa0-96ac-e9b7ab8a2acf" />
