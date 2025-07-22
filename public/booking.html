@@ -3,16 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MyClean Booking</title>
+  <title>MyClean - Book a Cleaning</title>
   <style>
     body {
       font-family: 'Helvetica Neue', sans-serif;
-      background-color: #f9f9f9;
       margin: 0;
       padding: 0;
+      background-color: #fafafa;
       display: flex;
       flex-direction: column;
       align-items: center;
+    }
+
+    header {
+      width: 100%;
+      background-color: white;
+      border-bottom: 1px solid #ddd;
+      padding: 20px 0;
+      text-align: center;
+      font-weight: bold;
+      font-size: 24px;
     }
 
     .container {
@@ -32,9 +42,10 @@
     }
 
     label {
+      font-weight: 600;
+      color: #444;
       display: block;
       margin-top: 15px;
-      font-weight: 600;
     }
 
     input, select, button {
@@ -51,6 +62,7 @@
       color: white;
       margin-top: 24px;
       cursor: pointer;
+      transition: background 0.3s ease;
     }
 
     button:hover {
@@ -58,14 +70,15 @@
     }
 
     .link-group {
+      margin-top: 24px;
       text-align: center;
-      margin-top: 20px;
+      font-size: 14px;
     }
 
     .link-group a {
-      margin: 0 10px;
-      text-decoration: none;
       color: #2b3a42;
+      text-decoration: none;
+      margin: 0 10px;
     }
 
     .link-group a:hover {
@@ -73,15 +86,20 @@
     }
 
     #message {
-      margin-top: 10px;
+      margin-top: 15px;
       text-align: center;
+      font-weight: 500;
+      color: #2b3a42;
     }
   </style>
 </head>
 <body>
+
   <header>MyClean Booking</header>
+
   <div class="container">
     <h2>Book a Cleaning Service</h2>
+
     <form id="booking-form">
       <label for="date">Date:</label>
       <input type="date" id="date" required />
@@ -102,83 +120,88 @@
     <p id="message"></p>
 
     <div class="link-group">
-      <a href="booking_view.html">📋 View My Bookings</a> |
+      <a href="booking_view.html">📋 View My Bookings</a>
+      |
       <a href="#" onclick="logout()">🚪 Logout</a>
     </div>
   </div>
 
-  <!-- Stripe -->
-  <script src="https://js.stripe.com/v3/"></script>
+  <!-- Firebase SDK  -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-  <!-- Firebase SDKs -->
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
-
-  <script>
     const firebaseConfig = {
-      apiKey: "AIzaSyA5WfQ8OQNmbbOBSjVH_fmdai7tDRxKbqo",
+      apiKey: "AIzaSyDnusZ7fck0nU_b0iDZAbAUyliQ0Dbc5Mc",
       authDomain: "jcuclean.firebaseapp.com",
       projectId: "jcuclean",
-      storageBucket: "jcuclean.appspot.com",
+      storageBucket: "jcuclean.firebasestorage.app",
       messagingSenderId: "573599830185",
-      appId: "1:573599830185:web:ecbb695c30a78dae4599b8",
-      measurementId: "G-V0QM9R1SGQ",
-      databaseURL: "https://jcuclean-default-rtdb.asia-southeast1.firebasedatabase.app"
+      appId: "1:137404600804:web:e2bd6b28fe6d9b7cb637f1"
     };
 
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-    const db = firebase.database();
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
 
     const stripe = Stripe("pk_test_51RiXVN4Ez787E9pYt9RaWomxXArD0nr9CiRkshIw78KnLp8AcVUF9sHldB1T0aGzRpmGDpLNVjMgzLim4vTNzWdd00Bq2qvBy3");
 
-    const priceMapping = {
-      "Standard": "price_1RiXkU4Ez787E9pY0XM62S3J",
-      "Deep": "price_1RiXko4Ez787E9pYxMVtxhuR",
-      "MoveOut": "price_1RiXlA4Ez787E9pY6MCpHAkZ"
+    const PRICE_IDS = {
+      Standard: "price_1RiXYZStandardID",  
+      Deep: "price_1RiXYZDeepID",
+      MoveOut: "price_1RiXYZMoveOutID"
     };
 
-    auth.onAuthStateChanged(user => {
-      if (!user) window.location.href = "login.html";
-    });
-
-    document.getElementById("booking-form").addEventListener("submit", async (e) => {
-      e.preventDefault();
-
-      const date = document.getElementById("date").value;
-      const time = document.getElementById("time").value;
-      const service = document.getElementById("service").value;
-      const user = auth.currentUser;
-
-      const priceId = priceMapping[service];
-      if (!priceId) {
-        document.getElementById("message").innerText = "❌ Invalid service selection.";
-        return;
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        window.location.href = "login.html";
       }
 
-      // Save booking to Firebase
-      await db.ref("bookings/" + user.uid).push({
-        date, time, service,
-        timestamp: Date.now()
-      });
+      document.getElementById("booking-form").addEventListener("submit", async function (e) {
+        e.preventDefault();
 
-      // Redirect to Stripe Checkout
-      stripe.redirectToCheckout({
-        lineItems: [{ price: priceId, quantity: 1 }],
-        mode: "payment",
-        successUrl: window.location.origin + "/booking_view.html",
-        cancelUrl: window.location.href
-      }).then(result => {
-        if (result.error) {
-          document.getElementById("message").innerText = "❌ " + result.error.message;
+        const date = document.getElementById("date").value;
+        const time = document.getElementById("time").value;
+        const service = document.getElementById("service").value;
+
+        try {
+          await addDoc(collection(db, "bookings"), {
+            userId: user.uid,
+            email: user.email,
+            date,
+            time,
+            service,
+            timestamp: new Date()
+          });
+
+          const result = await stripe.redirectToCheckout({
+            lineItems: [{ price: PRICE_IDS[service], quantity: 1 }],
+            mode: "payment",
+            successUrl: `${window.location.origin}/success.html`,
+            cancelUrl: `${window.location.origin}/booking.html`,
+            customerEmail: user.email
+          });
+
+          if (result.error) {
+            document.getElementById("message").innerText = "❌ " + result.error.message;
+          }
+
+        } catch (err) {
+          document.getElementById("message").innerText = "❌ Booking failed: " + err.message;
         }
       });
     });
 
-    function logout() {
-      auth.signOut().then(() => window.location.href = "login.html");
-    }
+    window.logout = function () {
+      signOut(auth).then(() => {
+        window.location.href = "login.html";
+      });
+    };
   </script>
+
+  <!-- Stripe.js -->
+  <script src="https://js.stripe.com/v3/"></script>
+
 </body>
 </html>
