@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MyClean - Best Cleaning Service</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fff;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    header h1 {
+      font-size: 24px;
+      color: #2563eb;
+    }
+    header nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #374151;
+      font-weight: 500;
+    }
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 60px 20px;
+      background: #f9fafb;
+    }
+    .hero h2 {
+      font-size: 40px;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 18px;
+      max-width: 600px;
+      color: #4b5563;
+      margin-bottom: 20px;
+    }
+    .rating {
+      display: flex;
+      align-items: center;
+      margin: 15px 0;
+    }
+    .rating span {
+      color: #f59e0b;
+      margin-right: 10px;
+    }
+    .input-group {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+    }
+    .input-group input {
+      padding: 14px;
+      font-size: 16px;
+      margin: 0 5px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      width: 180px;
+    }
+    .book-btn {
+      margin-top: 20px;
+      background: linear-gradient(to right, #7c3aed, #3b82f6);
+      color: white;
+      padding: 16px 32px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .features {
+      display: flex;
+      justify-content: space-around;
+      padding: 40px 20px;
+      background: #fff;
+      border-top: 1px solid #e5e7eb;
+      flex-wrap: wrap;
+    }
+    .features div {
+      text-align: center;
+      margin: 20px;
+      max-width: 200px;
+    }
+    .features h3 {
+      margin-top: 10px;
+      color: #1f2937;
+    }
+    .features p {
+      color: #6b7280;
+      font-size: 14px;
+    }
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      background: #f9fafb;
+      color: #6b7280;
+      font-size: 14px;
+    }
+    @media (max-width: 768px) {
+      .features {
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>MyClean</h1>
+    <nav>
+      <a href="#">Become a Cleaner</a>
+      <a href="#">Blog</a>
+      <a href="#">FAQ</a>
+      <a href="booking.html">Book Now</a>
+      <a href="login.html">Sign In</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Best Cleaning Service In Your City</h2>
+    <p>We clean, you relax. Join the thousands who discovered the peace of coming home to a sparkling clean space.</p>
+    <div class="rating">
+      <span>⭐⭐⭐⭐⭐</span>
+      <p>3,652 verified 5-star reviews</p>
+    </div>
+    <div class="input-group">
+      <input type="text" placeholder="Your Space" />
+      <input type="text" placeholder="ZIP Code" />
+    </div>
+    <button class="book-btn">Book From $92 →</button>
+  </section>
+
+  <section class="features">
+    <div>
+      <h3>🔒 Meticulous</h3>
+      <p>Thorough work. Thoughtful details.</p>
+    </div>
+    <div>
+      <h3>🛡️ Trusted</h3>
+      <p>Reliable vetted pros.</p>
+    </div>
+    <div>
+      <h3>🗓️ Seamless</h3>
+      <p>Easy booking, Apple Pay & Google Pay accepted.</p>
+    </div>
+    <div>
+      <h3>✨ High Quality</h3>
+      <p>Our cleaners are trained and background-checked.</p>
+    </div>
+    <div>
+      <h3>📅 Convenient Scheduling</h3>
+      <p>Book, reschedule, and get real-time updates online.</p>
+    </div>
+    <div>
+      <h3>💬 Friendly Support</h3>
+      <p>Timely and helpful support from your city.</p>
+    </div>
+  </section>
+
+  <section class="reviews" style="background:#f9fafb;padding:60px 20px;text-align:center;">
+  <h2 style="font-size:28px;font-weight:700;color:#1f2937;margin-bottom:40px;">Here's What Our Customers Are Saying</h2>
+  <div style="max-width:800px;margin:0 auto;">
+    <div style="background:white;padding:20px 30px;margin-bottom:20px;border-radius:12px;box-shadow:0 2px 6px rgba(0,0,0,0.05);text-align:left;">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <div><strong>Mindi M</strong><br><span style="color:#6b7280;font-size:14px;">New York</span></div>
+        <div style="color:#facc15;">★★★★★</div>
+      </div>
+      <p style="margin-top:15px;">I had a great experience with MyClean. The service was prompt and the quality of the work was excellent.</p>
+    </div>
+    <div style="background:white;padding:20px 30px;margin-bottom:20px;border-radius:12px;box-shadow:0 2px 6px rgba(0,0,0,0.05);text-align:left;">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <div><strong>Roberto N</strong><br><span style="color:#6b7280;font-size:14px;">New York</span></div>
+        <div style="color:#facc15;">★★★★★</div>
+      </div>
+      <p style="margin-top:15px;">A friend of mine just recommended I try MyClean and I was super impressed. I have never had a cleaner apartment! Will definitely be using MyClean again.</p>
+    </div>
+    <div style="background:white;padding:20px 30px;margin-bottom:20px;border-radius:12px;box-shadow:0 2px 6px rgba(0,0,0,0.05);text-align:left;">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <div><strong>Don J B</strong><br><span style="color:#6b7280;font-size:14px;">New York</span></div>
+        <div style="color:#facc15;">★★★★★</div>
+      </div>
+      <p style="margin-top:15px;">In a word, perfect. Cleaner arrived on time and ready to go. She was quick and thorough and the first and only person who cleaned my apartment as well as I have. Highly recommended!</p>
+    </div>
+    <button style="margin-top:20px;border:1px solid #3b82f6;color:#3b82f6;background:transparent;padding:12px 24px;border-radius:8px;cursor:pointer;font-weight:600;">Show more recent reviews +</button>
+  </div>
+</section>
+
+<section class="plans" style="padding:60px 20px;text-align:center;background:#fff;">
+  <h2 style="font-size:28px;font-weight:700;color:#1f2937;margin-bottom:40px;">We've Got a Clean for Every Type of Mess.</h2>
+  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:20px;max-width:1200px;margin:0 auto;">
+    
+    <div style="flex:1 1 300px;max-width:350px;border:1px solid #e5e7eb;border-radius:12px;padding:30px;box-shadow:0 2px 6px rgba(0,0,0,0.05);">
+      <div style="background:#2563eb;color:white;padding:6px 12px;border-radius:8px;display:inline-block;font-size:14px;font-weight:600;">Our go-to clean</div>
+      <h3 style="margin-top:20px;font-size:22px;">Standard</h3>
+      <p style="color:#4b5563;font-size:14px;margin:10px 0 20px;">A routine cleaning service designed to maintain your home's cleanliness by addressing high-traffic areas and common surfaces.</p>
+      <ul style="text-align:left;color:#1f2937;font-size:14px;margin-bottom:20px;line-height:1.6;">
+        <li>📋 60pt Checklist <a href="#" style="color:#2563eb;">Learn more</a></li>
+        <li>✔️ Recurring options available</li>
+        <li>✔️ Add-ons available</li>
+      </ul>
+      <p style="color:#6b7280;font-size:14px;">Starting at</p>
+      <p style="font-size:20px;font-weight:700;margin-bottom:20px;">$92.00 <span style="font-weight:400;font-size:14px;">/visit</span></p>
+      <button onclick="location.href='booking.html'" style="background:#2563eb;color:white;padding:12px 24px;border:none;border-radius:8px;cursor:pointer;font-weight:600;">Book now →</button>
+    </div>
+
+    <div style="flex:1 1 300px;max-width:350px;border:1px solid #e5e7eb;border-radius:12px;padding:30px;box-shadow:0 2px 6px rgba(0,0,0,0.05);">
+      <div style="background:#2dd4bf;color:white;padding:6px 12px;border-radius:8px;display:inline-block;font-size:14px;font-weight:600;">Enhanced essentials</div>
+      <h3 style="margin-top:20px;font-size:22px;">Standard Plus</h3>
+      <p style="color:#4b5563;font-size:14px;margin:10px 0 20px;">An enhanced version of the Standard Clean, offering additional attention to detail and extra focus on frequently used areas.</p>
+      <ul style="text-align:left;color:#1f2937;font-size:14px;margin-bottom:20px;line-height:1.6;">
+        <li>📋 75pt Checklist <a href="#" style="color:#2563eb;">Learn more</a></li>
+        <li>✔️ Recurring options available</li>
+        <li>✔️ Add-ons available</li>
+        <li>✔️ 50% Additional time</li>
+      </ul>
+      <p style="color:#6b7280;font-size:14px;">Starting at</p>
+      <p style="font-size:20px;font-weight:700;margin-bottom:20px;">$140.00 <span style="font-weight:400;font-size:14px;">/visit</span></p>
+      <button onclick="location.href='booking.html'" style="background:#2563eb;color:white;padding:12px 24px;border:none;border-radius:8px;cursor:pointer;font-weight:600;">Book now →</button>
+    </div>
+
+    <div style="flex:1 1 300px;max-width:350px;border:1px solid #e5e7eb;border-radius:12px;padding:30px;box-shadow:0 2px 6px rgba(0,0,0,0.05);">
+      <h3 style="margin-top:0;font-size:22px;">Deep Cleaning</h3>
+      <p style="color:#4b5563;font-size:14px;margin:10px 0 20px;">A comprehensive cleaning service targeting hard-to-reach and neglected areas, ideal for seasonal cleaning or preparing for special occasions.</p>
+      <ul style="text-align:left;color:#1f2937;font-size:14px;margin-bottom:20px;line-height:1.6;">
+        <li>📋 75pt Checklist <a href="#" style="color:#2563eb;">Learn more</a></li>
+        <li>✔️ Recurring options available</li>
+        <li>✔️ Add-ons included (Fridge, oven, cabinets)</li>
+        <li>✔️ 150% Additional time</li>
+      </ul>
+      <p style="color:#6b7280;font-size:14px;">Starting at</p>
+      <p style="font-size:20px;font-weight:700;margin-bottom:20px;">$318.00 <span style="font-weight:400;font-size:14px;">/visit</span></p>
+      <button onclick="location.href='booking.html'" style="background:#2563eb;color:white;padding:12px 24px;border:none;border-radius:8px;cursor:pointer;font-weight:600;">Book now →</button>
+    </div>
+
+  </div>
+</section>
+
+
+
+  <footer>
+    <p>&copy; 2025 MyClean. All rights reserved.</p>
+  </footer>
+
+    <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDnusZ7fck0nU_b0iDZAbAUyliQ0Dbc5Mc",
+      authDomain: "mycleanjcu.firebaseapp.com",
+      projectId: "mycleanjcu",
+      storageBucket: "mycleanjcu.firebasestorage.app",
+      messagingSenderId: "137404600804",
+      appId: "1:137404600804:web:e2bd6b28fe6d9b7cb637f1"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    const nav = document.querySelector("nav");
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const email = user.email;
+        
+        const userSpan = document.createElement("span");
+        userSpan.textContent = `Hello, ${email}`;
+        userSpan.style.marginLeft = "20px";
+        userSpan.style.color = "#2563eb";
+
+        const logoutLink = document.createElement("a");
+        logoutLink.href = "#";
+        logoutLink.textContent = "Logout";
+        logoutLink.style.marginLeft = "20px";
+        logoutLink.onclick = async () => {
+          await signOut(auth);
+          window.location.reload();
+        };
+
+        const loginLink = document.querySelector('a[href="login.html"]');
+        if (loginLink) loginLink.remove();
+
+        nav.appendChild(userSpan);
+        nav.appendChild(logoutLink);
+      }
+    });
+  </script>
+
+</body>
+
+
+
+</html>
