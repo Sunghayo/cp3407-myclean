@@ -3,58 +3,72 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Booking Successful</title>
+  <title>Payment Success - MyClean</title>
   <style>
     body {
-      font-family: 'Arial', sans-serif;
-      background-color: #f5f6fa;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
+      font-family: 'Helvetica Neue', sans-serif;
+      background-color: #f4f4f4;
       margin: 0;
-    }
-
-    .success-box {
-      background: #ffffff;
       padding: 40px;
-      border-radius: 12px;
       text-align: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-
     h1 {
-      color: #28a745;
+      color: #22c55e;
     }
-
     p {
       font-size: 18px;
-      margin-top: 10px;
-      color: #555;
-    }
-
-    a {
       margin-top: 20px;
-      display: inline-block;
-      background-color: #2a63f7;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: bold;
+      color: #333;
     }
-
+    a {
+      display: inline-block;
+      margin-top: 30px;
+      font-size: 16px;
+      text-decoration: none;
+      color: #2563eb;
+    }
     a:hover {
-      background-color: #1f4dd9;
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <div class="success-box">
-    <h1>✅ Booking Confirmed!</h1>
-    <p>Your cleaning appointment has been successfully booked.</p>
-    <a href="index.html">Return to Home</a>
-  </div>
+  <h1>✅ Payment Successful!</h1>
+  <p>Your cleaning booking has been confirmed.</p>
+  <a href="booking_view.html">📋 View My Bookings</a> | 
+  <a href="index.html">🏠 Back to Home</a>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getFirestore, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDnusZ7fck0nU_b0iDZAbAUyliQ0Dbc5Mc",
+      authDomain: "mycleanjcu.firebaseapp.com",
+      projectId: "mycleanjcu",
+      storageBucket: "mycleanjcu.appspot.com",
+      messagingSenderId: "137404600804",
+      appId: "1:137404600804:web:e2bd6b28fe6d9b7cb637f1"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const bookingId = localStorage.getItem("bookingId");
+
+    if (bookingId) {
+      const bookingRef = doc(db, "bookings", bookingId);
+      updateDoc(bookingRef, {
+        status: "Confirmed"
+      }).then(() => {
+        console.log("✅ Booking status updated to Confirmed.");
+        localStorage.removeItem("bookingId"); // clean up
+      }).catch((error) => {
+        console.error("❌ Error updating booking status:", error);
+      });
+    } else {
+      console.warn("⚠️ No bookingId found in localStorage.");
+    }
+  </script>
 </body>
 </html>
