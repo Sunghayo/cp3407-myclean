@@ -3,130 +3,179 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MyClean - Login</title>
+  <title>MyClean - Sign In</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Helvetica Neue', sans-serif;
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      background-color: #f5f5f5;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9fafb;
+      color: #1f2937;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      min-height: 100vh;
     }
-
     header {
-      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
       background-color: white;
-      border-bottom: 1px solid #ddd;
-      padding: 20px 0;
-      text-align: center;
-      font-weight: bold;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    header h1 {
       font-size: 24px;
+      color: #2563eb;
     }
-
-    .container {
-      margin-top: 40px;
-      max-width: 400px;
-      width: 90%;
-      background-color: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-    }
-
-    h2 {
-      text-align: center;
-      margin-bottom: 24px;
-      color: #333;
-    }
-
-    input {
-      width: 100%;
-      padding: 12px;
-      margin-top: 10px;
-      margin-bottom: 20px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 16px;
-    }
-
-    button {
-      width: 100%;
-      padding: 12px;
-      font-size: 16px;
-      background-color: #2b3a42;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #1d272d;
-    }
-
-    #message {
-      margin-top: 15px;
-      text-align: center;
+    header nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #374151;
       font-weight: 500;
-      color: #2b3a42;
+    }
+    .container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+    }
+    .login-box {
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      width: 100%;
+      max-width: 400px;
+    }
+    .login-box h2 {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 30px;
+    }
+    .login-box label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #374151;
+    }
+    .login-box input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    .login-box button {
+      width: 100%;
+      background-color: #3b82f6;
+      color: white;
+      padding: 14px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .login-box button:hover {
+      background-color: #2563eb;
+    }
+    .login-box .signup-link {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: #6b7280;
+    }
+    .login-box .signup-link a {
+      color: #3b82f6;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 14px;
+      color: #6b7280;
+      background: #ffffff;
+      border-top: 1px solid #e5e7eb;
     }
   </style>
 </head>
 <body>
 
-  <header>MyClean Login</header>
+  <header>
+    <h1>MyClean</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="booking.html">Book Now</a>
+      <a href="#">Blog</a>
+      <a href="#">FAQ</a>
+    </nav>
+  </header>
 
-  <div class="container">
-    <h2>Login</h2>
-    <form id="login-form">
-      <input type="email" id="email" placeholder="Email" required />
-      <input type="password" id="password" placeholder="Password" required />
-      <button type="submit">Login</button>
-    </form>
+  <main class="container">
+    <div class="login-box">
+      <h2>Sign In to MyClean</h2>
+      <form>
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="you@example.com" required />
 
-    <p id="message"></p>
-  </div>
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" required />
 
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+        <button type="submit">Sign In</button>
+          <div class="signup-link">
+              Don't have an account? <a href="signup.html">Create one</a>
+          </div>
+      </form>
+    </div>
+  </main>
 
-  <script>
-    // Firebase Setting
-    const firebaseConfig = {
-      apiKey: "AIzaSyA5WfQ8OQNmbbOBSjVH_fmdai7tDRxKbqo",
-      authDomain: "jcuclean.firebaseapp.com",
-      projectId: "jcuclean",
-      storageBucket: "jcuclean.firebasestorage.app",
-      messagingSenderId: "573599830185",
-      appId: "1:573599830185:web:ecbb695c30a78dae4599b8",
-      measurementId: "G-V0QM9R1SGQ"
-    };
+  <footer>
+    &copy; 2025 MyClean. All rights reserved.
+  </footer>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-    // Firebase reset
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
+  const firebaseConfig = {
+    apiKey: "AIzaSyDnusZ7fck0nU_b0iDZAbAUyliQ0Dbc5Mc",
+    authDomain: "mycleanjcu.firebaseapp.com",
+    projectId: "mycleanjcu",
+    storageBucket: "mycleanjcu.firebasestorage.app",
+    messagingSenderId: "137404600804",
+    appId: "1:137404600804:web:e2bd6b28fe6d9b7cb637f1"
+  };
 
-    // Login
-    const loginForm = document.getElementById("login-form");
-    loginForm.addEventListener("submit", function (e) {
-      e.preventDefault();
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
 
-      auth.signInWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-          document.getElementById("message").innerText = "✅ Login successful!";
-          // Go to booking page if success
-          window.location.href = "booking.html";
-        })
-        .catch((error) => {
-          document.getElementById("message").innerText = "❌ Error: " + error.message;
-        });
-    });
-  </script>
+  const form = document.querySelector("form");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      alert("Login successful!");
+      window.location.href = "index.html"; 
+    } catch (error) {
+      alert("Login failed: " + error.message);
+    }
+  });
+</script>
+
 </body>
+
+
 </html>
