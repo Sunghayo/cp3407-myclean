@@ -123,7 +123,7 @@
       apiKey: "AIzaSyDnusZ7fck0nU_b0iDZAbAUyliQ0Dbc5Mc",
       authDomain: "mycleanjcu.firebaseapp.com",
       projectId: "mycleanjcu",
-      storageBucket: "mycleanjcu.firebasestorage.app",
+      storageBucket: "mycleanjcu.appspot.com",
       messagingSenderId: "137404600804",
       appId: "1:137404600804:web:e2bd6b28fe6d9b7cb637f1"
     };
@@ -158,14 +158,18 @@
       };
 
       try {
-        await addDoc(collection(db, "bookings"), {
+        const docRef = await addDoc(collection(db, "bookings"), {
           userId: currentUser.uid,
           email: currentUser.email,
-          service,
-          date,
-          time,
+          name: currentUser.displayName || "Unknown",
+          service: service,
+          date: date,
+          time: time,
+          status: "Pending",
           createdAt: new Date()
         });
+
+        localStorage.setItem("bookingId", docRef.id);
 
         await stripe.redirectToCheckout({
           lineItems: [
@@ -179,6 +183,7 @@
           cancelUrl: window.location.origin + '/booking.html',
           customerEmail: currentUser.email
         });
+
       } catch (error) {
         document.getElementById("message").innerText = "❌ Error: " + error.message;
       }
@@ -191,7 +196,6 @@
     }
   </script>
 
-  <!-- Stripe.js -->
   <script src="https://js.stripe.com/v3/"></script>
 </body>
 </html>
