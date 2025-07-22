@@ -14,7 +14,6 @@
       flex-direction: column;
       align-items: center;
     }
-
     header {
       width: 100%;
       background-color: white;
@@ -24,7 +23,6 @@
       font-weight: bold;
       font-size: 24px;
     }
-
     .container {
       margin-top: 40px;
       max-width: 400px;
@@ -34,20 +32,17 @@
       border-radius: 12px;
       box-shadow: 0 4px 16px rgba(0,0,0,0.08);
     }
-
     h2 {
       text-align: center;
       margin-bottom: 24px;
       color: #333;
     }
-
     label {
       font-weight: 600;
       color: #444;
       display: block;
       margin-top: 15px;
     }
-
     input, select, button {
       width: 100%;
       padding: 10px;
@@ -56,7 +51,6 @@
       border-radius: 6px;
       font-size: 16px;
     }
-
     button {
       background-color: #2b3a42;
       color: white;
@@ -64,32 +58,27 @@
       cursor: pointer;
       transition: background 0.3s ease;
     }
-
     button:hover {
       background-color: #1d272d;
     }
-
     .link-group {
       margin-top: 24px;
       text-align: center;
       font-size: 14px;
     }
-
     .link-group a {
       color: #2b3a42;
       text-decoration: none;
       margin: 0 10px;
     }
-
     .link-group a:hover {
       text-decoration: underline;
     }
-
     #message {
       margin-top: 15px;
       text-align: center;
       font-weight: 500;
-      color: #2b3a42;
+      color: #e11d48;
     }
   </style>
 </head>
@@ -120,13 +109,11 @@
     <p id="message"></p>
 
     <div class="link-group">
-      <a href="booking_view.html">📋 View My Bookings</a>
-      |
+      <a href="booking_view.html">📋 View My Bookings</a> |
       <a href="#" onclick="logout()">🚪 Logout</a>
     </div>
   </div>
 
-  <!-- Firebase SDK  -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
     import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
@@ -134,10 +121,10 @@
 
     const firebaseConfig = {
       apiKey: "AIzaSyDnusZ7fck0nU_b0iDZAbAUyliQ0Dbc5Mc",
-      authDomain: "jcuclean.firebaseapp.com",
-      projectId: "jcuclean",
-      storageBucket: "jcuclean.firebasestorage.app",
-      messagingSenderId: "573599830185",
+      authDomain: "mycleanjcu.firebaseapp.com",
+      projectId: "mycleanjcu",
+      storageBucket: "mycleanjcu.firebasestorage.app",
+      messagingSenderId: "137404600804",
       appId: "1:137404600804:web:e2bd6b28fe6d9b7cb637f1"
     };
 
@@ -147,61 +134,64 @@
 
     const stripe = Stripe("pk_test_51RiXVN4Ez787E9pYt9RaWomxXArD0nr9CiRkshIw78KnLp8AcVUF9sHldB1T0aGzRpmGDpLNVjMgzLim4vTNzWdd00Bq2qvBy3");
 
-    const PRICE_IDS = {
-      Standard: "price_1RiXYZStandardID",  
-      Deep: "price_1RiXYZDeepID",
-      MoveOut: "price_1RiXYZMoveOutID"
-    };
+    let currentUser = null;
 
     onAuthStateChanged(auth, (user) => {
       if (!user) {
         window.location.href = "login.html";
+      } else {
+        currentUser = user;
       }
-
-      document.getElementById("booking-form").addEventListener("submit", async function (e) {
-        e.preventDefault();
-
-        const date = document.getElementById("date").value;
-        const time = document.getElementById("time").value;
-        const service = document.getElementById("service").value;
-
-        try {
-          await addDoc(collection(db, "bookings"), {
-            userId: user.uid,
-            email: user.email,
-            date,
-            time,
-            service,
-            timestamp: new Date()
-          });
-
-          const result = await stripe.redirectToCheckout({
-            lineItems: [{ price: PRICE_IDS[service], quantity: 1 }],
-            mode: "payment",
-            successUrl: `${window.location.origin}/success.html`,
-            cancelUrl: `${window.location.origin}/booking.html`,
-            customerEmail: user.email
-          });
-
-          if (result.error) {
-            document.getElementById("message").innerText = "❌ " + result.error.message;
-          }
-
-        } catch (err) {
-          document.getElementById("message").innerText = "❌ Booking failed: " + err.message;
-        }
-      });
     });
 
-    window.logout = function () {
+    document.getElementById("booking-form").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const date = document.getElementById("date").value;
+      const time = document.getElementById("time").value;
+      const service = document.getElementById("service").value;
+
+      const priceIds = {
+        Standard: "price_1RiXjPEz787E9pYtcdd71CCy",
+        Deep: "price_1RiXjvEz787E9pYtVbCybrLZ",
+        MoveOut: "price_1RiXkUEz787E9pYthn4MEvCC"
+      };
+
+      try {
+        await addDoc(collection(db, "bookings"), {
+          userId: currentUser.uid,
+          email: currentUser.email,
+          service,
+          date,
+          time,
+          createdAt: new Date()
+        });
+
+        await stripe.redirectToCheckout({
+          lineItems: [
+            {
+              price: priceIds[service],
+              quantity: 1
+            }
+          ],
+          mode: 'payment',
+          successUrl: window.location.origin + '/success.html',
+          cancelUrl: window.location.origin + '/booking.html',
+          customerEmail: currentUser.email
+        });
+      } catch (error) {
+        document.getElementById("message").innerText = "❌ Error: " + error.message;
+      }
+    });
+
+    function logout() {
       signOut(auth).then(() => {
         window.location.href = "login.html";
       });
-    };
+    }
   </script>
 
   <!-- Stripe.js -->
   <script src="https://js.stripe.com/v3/"></script>
-
 </body>
 </html>
