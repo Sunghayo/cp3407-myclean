@@ -68,7 +68,7 @@
         window.location.href = "login.html";
       } else {
         try {
-          const q = query(collection(db, "bookings"), where("userId", "==", user.uid));
+          const q = query(collection(db, "bookings"), where("userid", "==", user.uid));
           const querySnapshot = await getDocs(q);
 
           if (querySnapshot.empty) {
@@ -82,7 +82,7 @@
             const bookingDiv = document.createElement("div");
             bookingDiv.className = "booking";
             bookingDiv.innerHTML = `
-              <strong>${data.serviceType}</strong><br>
+              <strong>${data.service}</strong><br>
               <strong>Date:</strong> ${data.date} <br>
               <strong>Time:</strong> ${data.time} <br>
               <strong>Status:</strong> ${data.status || "Confirmed"}
