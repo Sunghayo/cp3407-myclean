@@ -3,129 +3,98 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MyClean - Sign Up</title>
+  <title>Sign Up - MyClean</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Helvetica Neue', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f5f5f5;
+      font-family: 'Inter', sans-serif;
+      background: #f9fafb;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
     }
-
-    header {
-      width: 100%;
-      background-color: white;
-      border-bottom: 1px solid #ddd;
-      padding: 20px 0;
-      text-align: center;
-      font-weight: bold;
-      font-size: 24px;
-    }
-
-    .container {
-      margin-top: 40px;
-      max-width: 400px;
-      width: 90%;
-      background-color: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-    }
-
-    h2 {
-      text-align: center;
+    h1 {
+      color: #2563eb;
       margin-bottom: 24px;
-      color: #333;
     }
-
+    form {
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      width: 100%;
+      max-width: 400px;
+    }
     input {
       width: 100%;
-      padding: 12px;
-      margin-top: 10px;
+      padding: 14px;
       margin-bottom: 20px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
       font-size: 16px;
     }
-
     button {
       width: 100%;
-      padding: 12px;
+      background: #2563eb;
+      color: #fff;
+      padding: 14px;
       font-size: 16px;
-      background-color: #2b3a42;
-      color: white;
+      font-weight: 600;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
     }
-
-    button:hover {
-      background-color: #1d272d;
-    }
-
-    #message {
-      margin-top: 15px;
+    p {
+      margin-top: 20px;
       text-align: center;
+    }
+    a {
+      color: #2563eb;
+      text-decoration: none;
       font-weight: 500;
-      color: #2b3a42;
     }
   </style>
 </head>
 <body>
+  <h1>Join MyClean</h1>
+  <form>
+    <input type="email" id="email" placeholder="Email address" required />
+    <input type="password" id="password" placeholder="Password (min 6 characters)" required />
+    <button type="submit">Sign Up</button>
+  </form>
+  <p>Already have an account? <a href="login.html">Login here</a></p>
 
-  <header>MyClean Sign Up</header>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-  <div class="container">
-    <h2>Sign Up</h2>
-    <form id="signup-form">
-      <input type="email" id="email" placeholder="Email" required />
-      <input type="password" id="password" placeholder="Password" required />
-      <button type="submit">Sign Up</button>
-    </form>
-
-    <p id="message"></p>
-  </div>
-
-  <!-- ✅ Firebase CDN ver -->
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
-
-  <script>
-    // Firebase Setting
     const firebaseConfig = {
-      apiKey: "AIzaSyA5WfQ8OQNmbbOBSjVH_fmdai7tDRxKbqo",
-      authDomain: "jcuclean.firebaseapp.com",
-      projectId: "jcuclean",
-      storageBucket: "jcuclean.firebasestorage.app",
-      messagingSenderId: "573599830185",
-      appId: "1:573599830185:web:ecbb695c30a78dae4599b8",
-      measurementId: "G-V0QM9R1SGQ"
+      apiKey: "AIzaSyDnusZ7fck0nU_b0iDZAbAUyliQ0Dbc5Mc",
+      authDomain: "mycleanjcu.firebaseapp.com",
+      projectId: "mycleanjcu",
+      storageBucket: "mycleanjcu.firebasestorage.app",
+      messagingSenderId: "137404600804",
+      appId: "1:137404600804:web:e2bd6b28fe6d9b7cb637f1"
     };
 
-    // firebase Reset
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
 
-    // Register 
-    document.getElementById("signup-form").addEventListener("submit", function (e) {
+    document.querySelector("form").addEventListener("submit", async (e) => {
       e.preventDefault();
-
-      const email = document.getElementById("email").value;
+      const email = document.getElementById("email").value.trim();
       const password = document.getElementById("password").value;
 
-      auth.createUserWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-          document.getElementById("message").innerText = "✅ Sign up successful!";
-          // Login page redirection
-          window.location.href = "login.html";
-        })
-        .catch((error) => {
-          document.getElementById("message").innerText = "❌ " + error.message;
-        });
+      try {
+        await createUserWithEmailAndPassword(auth, email, password);
+        alert("Sign up successful! Redirecting to login...");
+        window.location.href = "login.html";
+      } catch (error) {
+        alert("Sign up failed: " + error.message);
+      }
     });
   </script>
 </body>
