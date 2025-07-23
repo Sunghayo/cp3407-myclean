@@ -21,4 +21,4 @@
   [GitHub - cp3407-myclean](https://github.com/Sunghayo/cp3407-myclean)
 
 - **Deployment Platform:**  
-  Vercel (https://vercel.com/sunghas-projects/cp3407-myclean)
+  [Vercel - cp3407-myclean](https://vercel.com/sunghas-projects/cp3407-myclean)
