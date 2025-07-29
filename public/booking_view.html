@@ -33,14 +33,20 @@
       color: #f44336;
       text-decoration: none;
     }
-    .deleteBtn {
+    .deleteBtn, .reviewBtn {
       margin-top: 10px;
       padding: 6px 12px;
-      background-color: #e53935;
       color: #fff;
       border: none;
       border-radius: 4px;
       cursor: pointer;
+    }
+    .deleteBtn {
+      background-color: #e53935;
+    }
+    .reviewBtn {
+      background-color: #4CAF50;
+      margin-left: 10px;
     }
   </style>
 </head>
@@ -89,6 +95,7 @@
             const data = docSnap.data();
             const bookingDiv = document.createElement("div");
             bookingDiv.className = "booking";
+
             bookingDiv.innerHTML = `
               <strong>Service:</strong> ${data.service}<br>
               <strong>Date:</strong> ${data.date}<br>
@@ -97,7 +104,9 @@
               <strong>Notes:</strong> ${data.notes || "-"}<br>
               <strong>Status:</strong> ${data.status || "Confirmed"}<br>
               <button data-id="${docSnap.id}" class="deleteBtn">Delete</button>
+              ${data.status === "Completed" ? `<button onclick="location.href='review_write.html?bookingId=${docSnap.id}'" class="reviewBtn">Write Review</button>` : ""}
             `;
+
             bookingList.appendChild(bookingDiv);
           });
 
