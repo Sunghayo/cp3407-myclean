@@ -1,68 +1,71 @@
-import { auth, db } from "./firebase.js";
-import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import { collection, query, where, getDocs, addDoc, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getFirestore, collection, query, where, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { app } from "/firebase.js";
+
+const auth = getAuth(app);
+const db = getFirestore(app);
 
 const bookingSelect = document.getElementById("bookingSelect");
 const form = document.getElementById("reviewForm");
 
-let currentUser = null;
-let bookings = [];
-
 onAuthStateChanged(auth, async (user) => {
-  if (user) {
-    currentUser = user;
-    const q = query(
-      collection(db, "bookings"),
-      where("userId", "==", user.uid),
-      where("status", "==", "Completed")
-    );
-    const snapshot = await getDocs(q);
-
-    bookingSelect.innerHTML = "";
-    bookings = [];
-
-    snapshot.forEach((docSnap) => {
-      const booking = docSnap.data();
-      bookings.push({ id: docSnap.id, ...booking });
-
-      const option = document.createElement("option");
-      option.value = docSnap.id;
-      option.textContent = `${booking.serviceType} on ${booking.date}`;
-      bookingSelect.appendChild(option);
-    });
-
-    if (bookings.length === 0) {
-      const option = document.createElement("option");
-      option.value = "";
-      option.textContent = "No completed bookings found.";
-      bookingSelect.appendChild(option);
-    }
+  if (!user) {
+    alert("Please sign in to leave a review.");
+    window.location.href = "login.html";
+    return;
   }
+
+  const q = query(
+    collection(db, "bookings"),
+    where("userId", "==", user.uid),
+    where("status", "==", "completed")
+  );
+
+  const snapshot = await getDocs(q);
+  bookingSelect.innerHTML = "";
+
+  if (snapshot.empty) {
+    const opt = document.createElement("option");
+    opt.textContent = "No completed bookings found.";
+    opt.disabled = true;
+    bookingSelect.appendChild(opt);
+    bookingSelect.disabled = true;
+    return;
+  }
+
+  snapshot.forEach(doc => {
+    const data = doc.data();
+    const option = document.createElement("option");
+    option.value = doc.id;
+    option.textContent = `${data.service} (${data.date} ${data.time})`;
+    bookingSelect.appendChild(option);
+  });
 });
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
+
   const bookingId = bookingSelect.value;
   const rating = parseInt(document.getElementById("rating").value);
-  const content = document.getElementById("content").value;
+  const content = document.getElementById("content").value.trim();
 
-  if (!bookingId || !rating || !content) return;
+  if (!bookingId || !rating || !content) return alert("Please complete all fields.");
 
-  const booking = bookings.find(b => b.id === bookingId);
-  const userRef = doc(db, "users", currentUser.uid);
-  const userSnap = await getDoc(userRef);
-  const name = userSnap.exists() ? userSnap.data().name : currentUser.email;
-
-  await addDoc(collection(db, "reviews"), {
-    userId: currentUser.uid,
+  const user = auth.currentUser;
+  const review = {
+    userId: user.uid,
     bookingId,
-    serviceType: booking.serviceType,
-    name,
     rating,
     content,
-    timestamp: new Date()
-  });
+    createdAt: new Date()
+  };
 
-  alert("Review submitted!");
-  form.reset();
+  try {
+    await addDoc(collection(db, "reviews"), review);
+    alert("Review submitted!");
+    form.reset();
+  } catch (err) {
+    console.error("Review submission failed:", err);
+    alert("Failed to submit review.");
+  }
 });
