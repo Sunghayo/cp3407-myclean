@@ -126,15 +126,15 @@
   <header>
     <h1>MyClean</h1>
     <nav>
+      <a id="cleanerDashboardMenu" href="cleaner_dashboard.html" style="display: none;">Cleaner Dashboard</a>
       <a href="cleaner_signup.html">Become a Cleaner</a>
-        <li id="cleanerDashboardMenu" style="display: none;">
-          <a href="cleaner_dashboard.html">Cleaner Dashboard</a>
-        </li>
       <a href="#">Blog</a>
       <a href="#">FAQ</a>
       <a href="booking.html">Book Now</a>
       <a href="login.html">Sign In</a>
     </nav>
+
+
   </header>
 
   <section class="hero">
@@ -280,8 +280,7 @@
       </div>
     </div>
   </footer>
-
-    <script type="module">
+<script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
   import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
   import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
@@ -290,40 +289,33 @@
     apiKey: "AIzaSyDnusZ7fck0nU_b0iDZAbAUyliQ0Dbc5Mc",
     authDomain: "mycleanjcu.firebaseapp.com",
     projectId: "mycleanjcu",
-    storageBucket: "mycleanjcu.firebasestorage.app",
+    storageBucket: "mycleanjcu.appspot.com",  // 🔧 오타 수정 (firebasestorage.app → appspot.com)
     messagingSenderId: "137404600804",
     appId: "1:137404600804:web:e2bd6b28fe6d9b7cb637f1"
   };
-  const dashboardMenu = document.getElementById("cleanerDashboardMenu");
-
-  const docRef = doc(db, "users", user.uid);
-  const docSnap = await getDoc(docRef);
-
-  if (docSnap.exists()) {
-  const userData = docSnap.data();
-  const role = userData.role;
-
-  if (role === "cleaner") {
-    dashboardMenu.style.display = "block";
-  }
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
   const db = getFirestore(app);
 
   const nav = document.querySelector("nav");
+  const dashboardMenu = document.getElementById("cleanerDashboardMenu");
 
   onAuthStateChanged(auth, async (user) => {
     if (user) {
       let displayName = user.displayName;
 
-      if (!displayName) {
-        const docRef = doc(db, "users", user.uid);
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-          displayName = docSnap.data().name || user.email;
-        } else {
-          displayName = user.email;
+      const docRef = doc(db, "users", user.uid);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        const userData = docSnap.data();
+        displayName = userData.name || user.email;
+
+        if (userData.role === "cleaner") {
+          dashboardMenu.style.display = "block";
         }
+      } else {
+        displayName = user.email;
       }
 
       const userSpan = document.createElement("span");
@@ -349,14 +341,14 @@
   });
 
   if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/firebase-messaging-sw.js')
-    .then((registration) => {
-      console.log("✅ Service Worker registered:", registration);
-    })
-    .catch((err) => {
-      console.error("❌ Service Worker registration failed:", err);
-    });
-}
+    navigator.serviceWorker.register('/firebase-messaging-sw.js')
+      .then((registration) => {
+        console.log("✅ Service Worker registered:", registration);
+      })
+      .catch((err) => {
+        console.error("❌ Service Worker registration failed:", err);
+      });
+  }
 </script>
   
 <script type="module" src="/firebase.js"></script>
