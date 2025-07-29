@@ -3,30 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <title>Customer Reviews - MyClean</title>
-  <script type="module" src="/firebase.js"></script>
   <script type="module" src="/review.js"></script>
   <style>
     body {
       font-family: Arial, sans-serif;
       padding: 30px;
+      background-color: #f9fafb;
+    }
+    h1 {
+      text-align: center;
+      color: #2563eb;
     }
     .review {
-      border: 1px solid #ccc;
+      background: #fff;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 700px;
       border-radius: 8px;
-      padding: 15px;
-      margin-bottom: 20px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
-    .review h3 {
-      margin-bottom: 5px;
-      font-size: 18px;
-    }
-    .review span {
+    .review .stars {
       color: #f59e0b;
+    }
+    .review small {
+      color: #6b7280;
     }
   </style>
 </head>
 <body>
-  <h1>Customer Reviews</h1>
-  <div id="reviewList">Loading...</div>
+  <h1>What Our Customers Are Saying</h1>
+  <div id="reviews">Loading reviews...</div>
 </body>
 </html>
