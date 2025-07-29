@@ -294,7 +294,18 @@
     messagingSenderId: "137404600804",
     appId: "1:137404600804:web:e2bd6b28fe6d9b7cb637f1"
   };
+  const dashboardMenu = document.getElementById("cleanerDashboardMenu");
 
+  const docRef = doc(db, "users", user.uid);
+  const docSnap = await getDoc(docRef);
+
+  if (docSnap.exists()) {
+  const userData = docSnap.data();
+  const role = userData.role;
+
+  if (role === "cleaner") {
+    dashboardMenu.style.display = "block";
+  }
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
   const db = getFirestore(app);
