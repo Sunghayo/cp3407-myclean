@@ -22,3 +22,20 @@ onAuthStateChanged(auth, async (user) => {
     }
   }
 });
+
+import { onMessage } from "firebase/messaging";
+
+if (Notification.permission !== "granted") {
+  Notification.requestPermission().then((permission) => {
+    if (permission === "granted") {
+      console.log("🔔 Notification permission granted.");
+    }
+  });
+}
+
+onMessage(messaging, (payload) => {
+  console.log("🔔 Foreground message received: ", payload);
+
+  const { title, body } = payload.notification;
+  new Notification(title, { body });
+});
