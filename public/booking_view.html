@@ -90,9 +90,11 @@
             const bookingDiv = document.createElement("div");
             bookingDiv.className = "booking";
             bookingDiv.innerHTML = `
-              <strong>${data.service}</strong><br>
-              <strong>Date:</strong> ${data.date} <br>
-              <strong>Time:</strong> ${data.time} <br>
+              <strong>Service:</strong> ${data.service}<br>
+              <strong>Date:</strong> ${data.date}<br>
+              <strong>Time:</strong> ${data.time}<br>
+              <strong>Address:</strong> ${data.address || "N/A"}<br>
+              <strong>Notes:</strong> ${data.notes || "-"}<br>
               <strong>Status:</strong> ${data.status || "Confirmed"}<br>
               <button data-id="${docSnap.id}" class="deleteBtn">Delete</button>
             `;
