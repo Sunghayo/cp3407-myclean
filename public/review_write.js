@@ -64,6 +64,7 @@ form.addEventListener("submit", async (e) => {
     await addDoc(collection(db, "reviews"), review);
     alert("Review submitted!");
     form.reset();
+    window.location.href = "index.html"; 
   } catch (err) {
     console.error("Review submission failed:", err);
     alert("Failed to submit review.");
