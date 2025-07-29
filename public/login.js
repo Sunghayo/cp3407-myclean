@@ -23,8 +23,6 @@ onAuthStateChanged(auth, async (user) => {
   }
 });
 
-import { onMessage } from "firebase/messaging";
-
 if (Notification.permission !== "granted") {
   Notification.requestPermission().then((permission) => {
     if (permission === "granted") {
