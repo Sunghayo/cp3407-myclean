@@ -5,7 +5,7 @@ firebase.initializeApp({
   apiKey: "AIzaSyDnusZ7fck0nU_b0iDZAbAUyliQ0Dbc5Mc",
   authDomain: "mycleanjcu.firebaseapp.com",
   projectId: "mycleanjcu",
-  storageBucket: "mycleanjcu.appspot.com",
+  storageBucket: "mycleanjcu.firebaseapp.com",
   messagingSenderId: "137404600804",
   appId: "1:137404600804:web:e2bd6b28fe6d9b7cb637f1"
 });
@@ -13,11 +13,12 @@ firebase.initializeApp({
 const messaging = firebase.messaging();
 
 messaging.onBackgroundMessage((payload) => {
-  console.log("📦 Received background message: ", payload);
-  const notificationTitle = payload.notification.title;
-  const notificationOptions = {
-    body: payload.notification.body
-  };
+  console.log("📦 Background message received: ", payload);
 
-  self.registration.showNotification(notificationTitle, notificationOptions);
+  const { title, body } = payload.notification;
+
+  self.registration.showNotification(title, {
+    body,
+    icon: "/icon.png" 
+  });
 });
