@@ -43,13 +43,16 @@
       display: block;
       margin-top: 15px;
     }
-    input, select, button {
+    input, select, textarea, button {
       width: 100%;
       padding: 10px;
       margin-top: 8px;
       border: 1px solid #ccc;
       border-radius: 6px;
       font-size: 16px;
+    }
+    textarea {
+      resize: vertical;
     }
     button {
       background-color: #2b3a42;
@@ -103,6 +106,12 @@
         <option value="MoveOut">Move-out Cleaning</option>
       </select>
 
+      <label for="address">Home Address:</label>
+      <input type="text" id="address" placeholder="123 Main St, Apt 4B" required />
+
+      <label for="notes">Special Requests:</label>
+      <textarea id="notes" rows="3" placeholder="e.g. Please focus on the kitchen or bring pet-friendly supplies."></textarea>
+
       <button type="submit">Proceed to Payment</button>
     </form>
 
@@ -150,6 +159,8 @@
       const date = document.getElementById("date").value;
       const time = document.getElementById("time").value;
       const service = document.getElementById("service").value;
+      const address = document.getElementById("address").value.trim();
+      const notes = document.getElementById("notes").value.trim();
 
       const priceIds = {
         Standard: "price_1RiXkU4Ez787E9pY0XM62S3J",
@@ -165,6 +176,8 @@
           service: service,
           date: date,
           time: time,
+          address: address,
+          notes: notes,
           status: "Pending",
           createdAt: new Date()
         });
@@ -172,12 +185,7 @@
         localStorage.setItem("bookingId", docRef.id);
 
         await stripe.redirectToCheckout({
-          lineItems: [
-            {
-              price: priceIds[service],
-              quantity: 1
-            }
-          ],
+          lineItems: [{ price: priceIds[service], quantity: 1 }],
           mode: 'payment',
           successUrl: window.location.origin + '/success.html',
           cancelUrl: window.location.origin + '/booking.html',
