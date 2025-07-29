@@ -1,7 +1,7 @@
-import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-import { getMessaging, getToken, onMessage } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-messaging.js";
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { auth, db, messaging, VAPID_KEY } from './firebase.js';
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getToken, onMessage } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-messaging.js";
 
 onAuthStateChanged(auth, async (user) => {
   if (user) {
@@ -13,12 +13,12 @@ onAuthStateChanged(auth, async (user) => {
           fcmToken: token
         }, { merge: true });
 
-        console.log("FCM token saved:", token);
+        console.log("✅ FCM token saved:", token);
       } else {
-        console.warn("Permission not granted for notifications.");
+        console.warn("⚠️ Permission not granted for notifications.");
       }
     } catch (err) {
-      console.error("FCM token error:", err);
+      console.error("❌ FCM token error:", err);
     }
   }
 });
