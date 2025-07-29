@@ -279,49 +279,71 @@
   </footer>
 
     <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+  import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyDnusZ7fck0nU_b0iDZAbAUyliQ0Dbc5Mc",
-      authDomain: "mycleanjcu.firebaseapp.com",
-      projectId: "mycleanjcu",
-      storageBucket: "mycleanjcu.firebasestorage.app",
-      messagingSenderId: "137404600804",
-      appId: "1:137404600804:web:e2bd6b28fe6d9b7cb637f1"
-    };
+  const firebaseConfig = {
+    apiKey: "AIzaSyDnusZ7fck0nU_b0iDZAbAUyliQ0Dbc5Mc",
+    authDomain: "mycleanjcu.firebaseapp.com",
+    projectId: "mycleanjcu",
+    storageBucket: "mycleanjcu.firebasestorage.app",
+    messagingSenderId: "137404600804",
+    appId: "1:137404600804:web:e2bd6b28fe6d9b7cb637f1"
+  };
 
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
 
-    const nav = document.querySelector("nav");
+  const nav = document.querySelector("nav");
 
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const email = user.email;
-        
-        const userSpan = document.createElement("span");
-        userSpan.textContent = `Hello, ${email}`;
-        userSpan.style.marginLeft = "20px";
-        userSpan.style.color = "#2563eb";
+  onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      let displayName = user.displayName;
 
-        const logoutLink = document.createElement("a");
-        logoutLink.href = "#";
-        logoutLink.textContent = "Logout";
-        logoutLink.style.marginLeft = "20px";
-        logoutLink.onclick = async () => {
-          await signOut(auth);
-          window.location.reload();
-        };
-
-        const loginLink = document.querySelector('a[href="login.html"]');
-        if (loginLink) loginLink.remove();
-
-        nav.appendChild(userSpan);
-        nav.appendChild(logoutLink);
+      if (!displayName) {
+        const docRef = doc(db, "users", user.uid);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          displayName = docSnap.data().name || user.email;
+        } else {
+          displayName = user.email;
+        }
       }
+
+      const userSpan = document.createElement("span");
+      userSpan.textContent = `Hello, ${displayName}`;
+      userSpan.style.marginLeft = "20px";
+      userSpan.style.color = "#2563eb";
+
+      const logoutLink = document.createElement("a");
+      logoutLink.href = "#";
+      logoutLink.textContent = "Logout";
+      logoutLink.style.marginLeft = "20px";
+      logoutLink.onclick = async () => {
+        await signOut(auth);
+        window.location.reload();
+      };
+
+      const loginLink = document.querySelector('a[href="login.html"]');
+      if (loginLink) loginLink.remove();
+
+      nav.appendChild(userSpan);
+      nav.appendChild(logoutLink);
+    }
+  });
+
+  if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/firebase-messaging-sw.js')
+    .then((registration) => {
+      console.log("✅ Service Worker registered:", registration);
+    })
+    .catch((err) => {
+      console.error("❌ Service Worker registration failed:", err);
     });
-  </script>
+}
+</script>
 
 </body>
 
