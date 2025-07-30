@@ -1,24 +1,41 @@
-## Week 9: Technical Documentation
+**Week 9: Technical Documentation**
 
-### Software Development Tools
+**Front End Tools**  
+- HTML5  
+- CSS3  
+- JavaScript (Vanilla JS)
 
-- **Front End Tool:**  
-  HTML5, CSS3, JavaScript (Vanilla JS)
+**Back End Tools**  
+- Firebase Authentication  
+- Firebase Firestore (Realtime DB)  
+- Stripe API (for Payment Integration)  
+- Firebase Cloud Messaging (FCM) for Push Notification
 
-- **Back End Tool:**  
-  Firebase Authentication, Firestore, Stripe API
+**Database Engine**  
+- Firebase Firestore
 
-- **Database Engine/Software:**  
-  Firebase Firestore (NoSQL Cloud Database)
+**IDE**  
+- Visual Studio Code
 
-- **IDE:**  
-  Visual Studio Code
+**Version Control**  
+- Git (local)  
+- GitHub (remote repository): https://github.com/[your-team]/cp3407-myclean
 
-- **Version Control:**  
-  Git
+**Deployment Platform**  
+- Vercel: https://cp3407-myclean.vercel.app
 
-- **Remote Repo:**  
-  [GitHub - cp3407-myclean](https://github.com/Sunghayo/cp3407-myclean)
+**Design/Mockup Tool**  
+- NinjaMock – for UI wireframes 
 
-- **Deployment Platform:**  
-  [Vercel - cp3407-myclean](https://vercel.com/sunghas-projects/cp3407-myclean)
+**User Role Management**  
+- Roles: `customer`, `cleaner` (stored in Firestore `users` collection)  
+- Cleaner-specific dashboard visibility and logic based on `role`
+
+**Notifications**  
+- Push Notifications using Firebase Cloud Messaging (FCM)  
+- Service worker enabled (`firebase-messaging-sw.js`) for background notification
+
+**Testing Methodology**  
+- Manual testing: feature-by-feature in browser console  
+- Authenticated flows, role visibility, booking and review logic tested
+
