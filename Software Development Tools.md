@@ -19,7 +19,7 @@
 
 **Version Control**  
 - Git (local)  
-- GitHub (remote repository): https://github.com/[your-team]/cp3407-myclean
+- GitHub (remote repository): [https://github.com/[your-team]/cp3407-myclean](https://github.com/Sunghayo/cp3407-myclean)
 
 **Deployment Platform**  
 - Vercel: https://cp3407-myclean.vercel.app
