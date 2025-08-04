@@ -8,33 +8,39 @@
   <style>
     body {
       font-family: 'Inter', sans-serif;
-      background: #f9fafb;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
-      margin: 0;
     }
     h1 {
-      color: #2563eb;
+      color: #2c3e50;
+      font-size: 26px;
       margin-bottom: 24px;
     }
+     h1 span {
+      color: #2563eb;
+     }
     form {
       background: #ffffff;
-      padding: 40px;
+      padding: 35;
       border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-      width: 100%;
-      max-width: 400px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      width: 90%;
+      max-width: 420px;
     }
     input {
       width: 100%;
       padding: 14px;
-      margin-bottom: 20px;
-      border: 1px solid #d1d5db;
+      margin-bottom: 18px;
+      border: 1px solid #ccc;
       border-radius: 8px;
-      font-size: 16px;
+      font-size: 15px;
+      background-color: #fdfdfd;
     }
     button {
       width: 100%;
@@ -46,9 +52,20 @@
       border: none;
       border-radius: 8px;
       cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+    button:hover {
+      background-color: #1d4ed8;
+    }
+    .message {
+      margin-top: 14px;
+      font-size: 14px;
+      text-align: center;
+      font-weight: 500;
     }
     p {
       margin-top: 20px;
+      font-size: 14px;
       text-align: center;
     }
     a {
@@ -56,10 +73,8 @@
       text-decoration: none;
       font-weight: 500;
     }
-    .message {
-      text-align: center;
-      margin-top: 10px;
-      color: red;
+    a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
