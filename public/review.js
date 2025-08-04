@@ -46,7 +46,7 @@ async function loadReviews() {
 
     const fetchedReviews = [];
 
-    for (const docSnap of snapchot.docs) {
+    for (const docSnap of snapshot.docs) {
       const review = docSnap.data();
 
       let service = "Service Unknown";
@@ -98,7 +98,5 @@ sortDropdown?.addEventListener("change", () => {
   const selected = sortDropdown.value;
   sortAndRender(selected);
 });
-
-loadReviews();
 
 loadReviews();
