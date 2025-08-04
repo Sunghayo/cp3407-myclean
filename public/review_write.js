@@ -5,6 +5,7 @@ import { app } from "/firebase.js";
 const auth = getAuth(app);
 const db = getFirestore(app);
 
+const messageDiv = document.getElementById("message");
 const bookingSelect = document.getElementById("bookingSelect");
 const form = document.getElementById("reviewForm");
 
@@ -49,7 +50,10 @@ form.addEventListener("submit", async (e) => {
   const rating = parseInt(document.getElementById("rating").value);
   const content = document.getElementById("content").value.trim();
 
-  if (!bookingId || !rating || !content) return alert("Please complete all fields.");
+  if (!bookingId || !rating || !content) [
+    alert("Please complete all fields.");
+    return;
+}
 
   const user = auth.currentUser;
   const review = {
@@ -57,16 +61,21 @@ form.addEventListener("submit", async (e) => {
     bookingId,
     rating,
     content,
-    createdAt: new Date()
+    createdAt: serverTimestamp()
   };
 
   try {
     await addDoc(collection(db, "reviews"), review);
-    alert("Review submitted!");
+    messageDiv.style.color = "green";
+    messageDiv.textContent = "✅ Review submitted successfully!";
     form.reset();
-    window.location.href = "index.html"; 
+
+    setTimeout(() => {
+      window.location.href = "index.html";
+    }, 2000);
   } catch (err) {
     console.error("Review submission failed:", err);
-    alert("Failed to submit review.");
+    messageDiv.style.color = "red";
+    messageDiv.textContent = "Failed to submit review.";
   }
 });
