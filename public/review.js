@@ -14,6 +14,27 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 const reviewsDiv = document.getElementById("reviews");
+const sortDropdown = document.getElementById("sortDropdown");
+
+let reviewsData = [];
+
+function renderReviews(data) {
+  reviewsDiv.innerHTML = "";
+  data.forEach(({ stars, content, service, userId, createdAt }) => {
+    const reviewEl = document.createElement("div");
+    reviewEl.className = "review";
+    reviewEl.innerHTML = `
+      <div class="stars">${stars}</div>
+      <p>${content}</p>
+      <small>
+        Service: ${service}<br>
+        User: ${userId.slice(0, 6)}****<br>
+        Date: ${createdAt}
+      </small>
+    `;
+    reviewsDiv.appendChild(reviewEl);
+  });
+}
 
 async function loadReviews() {
   try {
@@ -23,42 +44,61 @@ async function loadReviews() {
       return;
     }
 
-    reviewsDiv.innerHTML = "";
+    const fetchedReviews = [];
 
-    for (const docSnap of snapshot.docs) {
+    for (const docSnap of snapchot.docs) {
       const review = docSnap.data();
 
-      let bookingInfo = "Service Unknown";
+      let service = "Service Unknown";
       try {
         const bookingRef = doc(db, "bookings", review.bookingId);
         const bookingSnap = await getDoc(bookingRef);
         if (bookingSnap.exists()) {
-          const data = bookingSnap.data();
-          bookingInfo = data.service;
+          service = bookingSnap.data().service;
         }
       } catch {}
 
-      const stars = "⭐".repeat(review.rating || 0);
-      const createdAt = review.createdAt?.toDate?.().toLocaleString() || "";
-
-      const reviewEl = document.createElement("div");
-      reviewEl.className = "review";
-      reviewEl.innerHTML = `
-        <div class="stars">${stars}</div>
-        <p>${review.content}</p>
-        <small>
-          Service: ${bookingInfo}<br>
-          User: ${review.userId.slice(0, 6)}****<br>
-          Date: ${createdAt}
-        </small>
-      `;
-      reviewsDiv.appendChild(reviewEl);
+      const createdDate = review.createdAt?.toDate?.() || new Date();
+      fetchedReviews.push({
+        stars: "⭐".repeat(review.rating || 0),
+        rating: review.rating || 0,
+        content: review.content || "",
+        service,
+        userId: review.userId || "Unknown",
+        createdAt: createdDate,
+      });
     }
+    
+    reviewsData = fetchedReviews;
+    sortAndRender("recent");
 
   } catch (error) {
     console.error("Error loading reviews:", error);
     reviewsDiv.innerHTML = "<p style='color:red;'>Failed to load reviews.</p>";
   }
 }
+
+function sortAndRender(mode) {
+  const sorted = [...reviewsData];
+  if (mode === "rating") {
+    sorted.sort((a, b) => b.rating - a.rating);
+  } else {
+    sorted.sort((a, b) => b.createdAt - a.createdAt);
+  }
+
+  renderReviews(
+    sorted.map(r => ({
+      ...r,
+      createdAt: r.createdAt.toLocaleString(),
+    }))
+  );
+}
+
+sortDropdown?.addEventListener("change", () => {
+  const selected = sortDropdown.value;
+  sortAndRender(selected);
+});
+
+loadReviews();
 
 loadReviews();
