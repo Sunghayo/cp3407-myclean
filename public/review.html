@@ -69,6 +69,18 @@
 </head>
 <body>
   <h1>What Our Customers Are Saying</h1>
+
+  <div style="display: flex; justify-content: center; align-items: center; gap: 20px; margin-bottom: 30px; flex-wrap: wrap;">
+    <select id="sortDropdown" style="padding: 10px; border-radius: 8px; border: 1px solid #d1d5db; font-size: 14px;">
+      <option value="recent">Sort by Most Recent</option>
+      <option value="rating">Sort by Highest Rated</option>
+    </select>
+    
+    <a href="review_write.html" style="background: #2563eb; color: white; padding: 10px 20px; border-radius: 8px; font-weight: 600; text-decoration: none;">
+      + Leave a Review
+    </a>
+  </div>
+  
   <div id="reviews">Loading reviews...</div>
 </body>
 </html>
