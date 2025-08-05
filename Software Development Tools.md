@@ -39,3 +39,5 @@
 - Manual testing: feature-by-feature in browser console  
 - Authenticated flows, role visibility, booking and review logic tested
 
+**Customer Support Tools**  
+- Tidio Chatbot (integrated for real-time user support via embedded script)
