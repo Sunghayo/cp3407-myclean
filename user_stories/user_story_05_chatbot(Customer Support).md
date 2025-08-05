@@ -28,7 +28,8 @@ Description-v2: As a user, I want to get real-time support through a chatbot int
 # UI Design:  
 * <img width="1531" height="814" alt="스크린샷 2025-08-05 23 41 00" src="https://github.com/user-attachments/assets/91f65ecd-0e93-4419-9439-6a5cf7d6e6e6" />
 
-# Completed:  
+## Completed  
+- ✅ All tasks were implemented by **Sungha (SH)**  
 - [O] Tidio chatbot embedded on all key pages  
 - [O] FAQ-based auto-response configured  
 - [O] Human handoff setting enabled (optional)
