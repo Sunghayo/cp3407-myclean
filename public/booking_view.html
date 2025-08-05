@@ -3,129 +3,110 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My Booking History</title>
+  <title>My Booking History - MyClean</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f6f8;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      font-family: 'Inter', sans-serif;
+      background-color: #f9fafb;
+      color: #1f2937;
     }
     header {
-      width: 100%;
-      background-color: #ffffff;
-      padding: 24px 0;
-      text-align: center;
-      font-size: 26px;
-      font-weight: bold;
-      border-bottom: 1px solid #ddd;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      border-bottom: 1px solid #e5e7eb;
+      background: white;
     }
-    .container {
-      width: 90%;
-      max-width: 700px;
-      margin-top: 40px;
-    }
-    .booking {
-      background: #ffffff;
-      border-left: 5px solid #3498db;
-      border-radius: 10px;
-      padding: 20px 25px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-    }
-    .booking p {
-      margin: 6px 0;
-      color: #34495e;
-    }
-    .booking strong {
-      display: inline-block;
-      width: 100px;
-      color: #2c3e50;
-    }
-        .booking-actions {
-      margin-top: 12px;
-    }
-    .deleteBtn,
-    .reviewBtn {
-      padding: 8px 14px;
-      font-size: 14px;
+    header h1 { font-size: 24px; color: #2563eb; }
+    header nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #374151;
       font-weight: 500;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      margin-right: 10px;
-      color: white;
-      transition: background-color 0.2s ease;
     }
-    .deleteBtn {
-      background-color: #e74c3c;
+    main {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
     }
-    .deleteBtn:hover {
-      background-color: #c0392b;
-    }
-    .reviewBtn {
-      background-color: #27ae60;
-    }
-    .reviewBtn:hover {
-      background-color: #219150;
-    }
-    .button-bar {
+    h2 {
+      font-size: 28px;
+      font-weight: 700;
       text-align: center;
-      margin-top: 30px;
+      margin-bottom: 20px;
     }
-    .button-bar a {
-      text-decoration: none;
-      background-color: #27ae60;
-      color: white;
-      padding: 10px 20px;
+    .btn {
+      padding: 8px 16px;
       border-radius: 6px;
-      font-size: 14px;
-    }
-    .button-bar a:hover {
-      background-color: #219150;
-    }
-    .logout {
-      text-align: center;
-      margin: 40px 0;
-      font-size: 14px;
-    }
-    .logout a {
-      color: #e74c3c;
-      text-decoration: none;
-    }
-    .logout a:hover {
-      text-decoration: underline;
-    }
-    .deleteBtn, .reviewBtn {
-      margin-top: 10px;
-      padding: 6px 12px;
-      color: #fff;
+      font-weight: 600;
       border: none;
-      border-radius: 4px;
       cursor: pointer;
     }
-    .deleteBtn {
-      background-color: #e53935;
+    .btn-green { background: #27ae60; color: white; }
+    .btn-green:hover { background: #219150; }
+    .btn-red { background: #e74c3c; color: white; }
+    .btn-red:hover { background: #c0392b; }
+    .booking {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
     }
-    .reviewBtn {
-      background-color: #4CAF50;
-      margin-left: 10px;
+    .booking strong { color: #111827; }
+    .status-badge {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .status-confirmed { background: #dbeafe; color: #1d4ed8; }
+    .status-completed { background: #d1fae5; color: #065f46; }
+    .status-canceled { background: #fee2e2; color: #991b1b; }
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      text-align: center;
+      font-size: 14px;
+      background: #f3f4f6;
+      color: #6b7280;
+    }
+    @media (max-width: 640px) {
+      header { flex-direction: column; align-items: flex-start; }
+      header nav { margin-top: 10px; }
     }
   </style>
 </head>
 <body>
-  <h1>My Booking History</h1>
-  <div style="text-align: center; margin-bottom: 20px;">
-  <a href="review_write.html" style="text-decoration: none; background-color: #4CAF50; color: white; padding: 8px 16px; border-radius: 4px; display: inline-block;">Write a Review</a>
-  </div>
-  <div id="bookingList">Loading your bookings...</div>
-  <div class="logout">
-    <a href="#" id="logoutBtn">Logout</a>
-  </div>
+  <header>
+    <h1>MyClean</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="booking.html">Book Now</a>
+      <a href="review.html">Reviews</a>
+      <a href="faq.html">FAQ</a>
+      <a href="login.html" id="loginLink">Sign In</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>My Booking History</h2>
+    <div style="text-align: center; margin-bottom: 20px;">
+      <a href="review_write.html" class="btn btn-green">Write a Review</a>
+    </div>
+    <div id="bookingList">Loading your bookings...</div>
+    <div style="text-align:center; margin-top:20px;">
+      <a href="#" id="logoutBtn" style="color:#e74c3c; font-weight:500;">Logout</a>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 MyClean. All rights reserved.
+  </footer>
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
@@ -140,7 +121,6 @@
       messagingSenderId: "573599830185",
       appId: "1:573599830185:web:ecbb695c30a78dae4599b8"
     };
-
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const db = getFirestore(app);
@@ -151,47 +131,46 @@
       if (!user) {
         window.location.href = "login.html";
       } else {
-        try {
-          const q = query(collection(db, "bookings"), where("userId", "==", user.uid));
-          const querySnapshot = await getDocs(q);
+        const q = query(collection(db, "bookings"), where("userId", "==", user.uid));
+        const querySnapshot = await getDocs(q);
+        bookingList.innerHTML = "";
 
-          if (querySnapshot.empty) {
-            bookingList.innerHTML = "<p>No bookings found.</p>";
-            return;
-          }
-
-          bookingList.innerHTML = "";
-          querySnapshot.forEach((docSnap) => {
-            const data = docSnap.data();
-            const bookingDiv = document.createElement("div");
-            bookingDiv.className = "booking";
-
-            bookingDiv.innerHTML = `
-              <strong>Service:</strong> ${data.service}<br>
-              <strong>Date:</strong> ${data.date}<br>
-              <strong>Time:</strong> ${data.time}<br>
-              <strong>Address:</strong> ${data.address || "N/A"}<br>
-              <strong>Notes:</strong> ${data.notes || "-"}<br>
-              <strong>Status:</strong> ${data.status || "Confirmed"}<br>
-              <button data-id="${docSnap.id}" class="deleteBtn">Delete</button>
-              ${data.status === "Completed" ? `<button onclick="location.href='review_write.html?bookingId=${docSnap.id}'" class="reviewBtn">Write Review</button>` : ""}
-            `;
-
-            bookingList.appendChild(bookingDiv);
-          });
-
-          document.querySelectorAll(".deleteBtn").forEach((button) => {
-            button.addEventListener("click", async (e) => {
-              const id = e.target.getAttribute("data-id");
-              if (confirm("Are you sure you want to delete this booking?")) {
-                await deleteDoc(doc(db, "bookings", id));
-                e.target.parentElement.remove();
-              }
-            });
-          });
-        } catch (error) {
-          bookingList.innerHTML = `<p style="color:red;">Failed to load bookings: ${error.message}</p>`;
+        if (querySnapshot.empty) {
+          bookingList.innerHTML = "<p>No bookings found.</p>";
+          return;
         }
+
+        querySnapshot.forEach((docSnap) => {
+          const data = docSnap.data();
+          const div = document.createElement("div");
+          div.className = "booking";
+
+          let statusClass = "status-confirmed";
+          if (data.status === "Completed") statusClass = "status-completed";
+          if (data.status === "Canceled") statusClass = "status-canceled";
+
+          div.innerHTML = `
+            <p><strong>Service:</strong> ${data.service}</p>
+            <p><strong>Date:</strong> ${data.date}</p>
+            <p><strong>Time:</strong> ${data.time}</p>
+            <p><strong>Address:</strong> ${data.address || "N/A"}</p>
+            <p><strong>Notes:</strong> ${data.notes || "-"}</p>
+            <p><strong>Status:</strong> <span class="status-badge ${statusClass}">${data.status || "Confirmed"}</span></p>
+            <button class="btn btn-red deleteBtn" data-id="${docSnap.id}">Delete</button>
+            ${data.status === "Completed" ? `<button onclick="location.href='review_write.html?bookingId=${docSnap.id}'" class="btn btn-green">Write Review</button>` : ""}
+          `;
+          bookingList.appendChild(div);
+        });
+
+        document.querySelectorAll(".deleteBtn").forEach(btn => {
+          btn.addEventListener("click", async (e) => {
+            const id = e.target.getAttribute("data-id");
+            if (confirm("Are you sure you want to delete this booking?")) {
+              await deleteDoc(doc(db, "bookings", id));
+              e.target.parentElement.remove();
+            }
+          });
+        });
       }
     });
 
