@@ -25,6 +25,7 @@ The cleaner registration feature should collect full name, contact details, serv
 3. Display confirmation screen after successful registration – 0.5 day
 
 # UI Design:
+<img width="1126" height="721" alt="스크린샷 2025-08-05 23 44 25" src="https://github.com/user-attachments/assets/b555efab-ffdf-4baa-8530-4c706e999505" />
 
 * Insert a mockup design screenshot using any prototyping tools, e.g. [https://ninjamock.com/](https://ninjamock.com/)
 
