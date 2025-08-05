@@ -22,9 +22,10 @@ Design login UI with email & password fields – 0.5 day
 Implement authentication logic (backend) – 1 day  
 Set up session handling and redirection – 0.5 day  
 
-## UI Design (Mockup)  
+## UI Design (Mockup/figma)  
 - Created using NinjaMock by Yu-Yang  
 - 🔗 [View Mockup](https://ninjamock.com/s/XRNN7Lx)
+- 🔗 [View Figma]（https://www.figma.com/proto/n42s1wX1D6KatzTybRvOqm/UI-CP3407?node-id=35-11&t=C5J8wy2TUtNpNocP-1）
 
 ## Completed  
 - ✅ All tasks were implemented by **Sungha (SH)**  
