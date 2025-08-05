@@ -23,6 +23,7 @@ Description-v2: As a cleaner, I want to set my available time slots so that cust
 2. Database update for schedules: 1 day
 
 # UI Design:
+<img width="1546" height="932" alt="스크린샷 2025-08-05 23 42 56" src="https://github.com/user-attachments/assets/8cd9183d-ba3d-4ef8-be7d-be1d2a377483" />
 
 * Insert a mockup design screenshot using any prototyping tools, e.g. [https://ninjamock.com/](https://ninjamock.com/)
 
