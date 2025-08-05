@@ -1,56 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Write a Review - MyClean</title>
-  <script type="module" src="/firebase.js"></script>
-  <script type="module" src="/review_write.js"></script>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 30px;
-    }
-    label {
-      display: block;
-      margin-top: 15px;
-    }
-    select, textarea, input[type="text"], button {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-    }
-    button {
-      background-color: #2563eb;
-      color: white;
-      font-weight: bold;
-      border: none;
-      margin-top: 20px;
-    }
-  </style>
-</head>
-<body>
-  <h1>Write a Review</h1>
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getFirestore, collection, query, where, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { app } from "/firebase.js";
 
-  <form id="reviewForm">
-    <label for="bookingSelect">Select Completed Booking</label>
-    <select id="bookingSelect" required>
-      <option value="">Loading your bookings...</option>
-    </select>
+const auth = getAuth(app);
+const db = getFirestore(app);
 
-    <label for="rating">Rating (1–5 stars)</label>
-    <select id="rating" required>
-      <option value="">Select rating</option>
-      <option value="1">⭐</option>
-      <option value="2">⭐⭐</option>
-      <option value="3">⭐⭐⭐</option>
-      <option value="4">⭐⭐⭐⭐</option>
-      <option value="5">⭐⭐⭐⭐⭐</option>
-    </select>
+const bookingSelect = document.getElementById("bookingSelect");
+const form = document.getElementById("reviewForm");
 
-    <label for="content">Review</label>
-    <textarea id="content" rows="5" placeholder="Write your review here..." required></textarea>
+onAuthStateChanged(auth, async (user) => {
+  if (!user) {
+    alert("Please sign in to leave a review.");
+    window.location.href = "login.html";
+    return;
+  }
 
-    <button type="submit">Submit Review</button>
-  </form>
-</body>
-</html>
+  const q = query(
+    collection(db, "bookings"),
+    where("userId", "==", user.uid),
+    where("status", "==", "completed")
+  );
+
+  const snapshot = await getDocs(q);
+  bookingSelect.innerHTML = "";
+
+  if (snapshot.empty) {
+    const opt = document.createElement("option");
+    opt.textContent = "No completed bookings found.";
+    opt.disabled = true;
+    bookingSelect.appendChild(opt);
+    bookingSelect.disabled = true;
+    return;
+  }
+
+  snapshot.forEach(doc => {
+    const data = doc.data();
+    const option = document.createElement("option");
+    option.value = doc.id;
+    option.textContent = `${data.service} (${data.date} ${data.time})`;
+    bookingSelect.appendChild(option);
+  });
+});
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const bookingId = bookingSelect.value;
+  const rating = parseInt(document.getElementById("rating").value);
+  const content = document.getElementById("content").value.trim();
+
+  if (!bookingId || !rating || !content) return alert("Please complete all fields.");
+
+  const user = auth.currentUser;
+  const review = {
+    userId: user.uid,
+    bookingId,
+    rating,
+    content,
+    createdAt: new Date()
+  };
+
+  try {
+    await addDoc(collection(db, "reviews"), review);
+    alert("Review submitted!");
+    form.reset();
+    window.location.href = "index.html"; 
+  } catch (err) {
+    console.error("Review submission failed:", err);
+    alert("Failed to submit review.");
+  }
+});
