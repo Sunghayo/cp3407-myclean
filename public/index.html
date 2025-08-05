@@ -96,7 +96,7 @@
     }
     .features {
       display: grid;
-      grid-template-columns: repeat(3, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 20px;
       padding: 40px 20px;
       background: #fff;
@@ -154,8 +154,7 @@
   }
     @media (max-width: 768px) {
       .features {
-        flex-direction: column;
-        gap: 20px;
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -393,7 +392,5 @@
 <script type="module" src="/login.js"></script>
 
 </body>
-
-
 
 </html>
