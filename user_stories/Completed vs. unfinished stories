@@ -1,0 +1,19 @@
+| User Story                        | Status | Estimate              |             |
+| --------------------------------- | ------ | --------------------- | ----------  |
+| Login Feature                     | Done ✅ | 2 days                | SH         |
+| Book Cleaning                     | Done ✅ | 2 days                | SH         |
+| In-app Payment                    | Done ✅ | 3 days                | SH         |
+| Implement Login Page UI           | Done ✅ | part of Login         | ML         |
+| Connect Login Form to Backend API | Done ✅ | part of Login         | SH         |
+| Connect Booking UI to Backend API | Done ✅ | part of Book Cleaning | SH         |
+| Implement Book Cleaning UI        | Done ✅ | part of Book Cleaning | ML         |
+| Implement Payment UI Form         | Done ✅ | part of Payment       | ML         |
+| Integrate Payment UI with Backend | Done ✅ | part of Payment       | SH         |
+
+
+| User Story                      | Status        |    Iteration |
+| ------------------------------- | ------------- | ------------ |
+| Cleaner Sign-Up                 | Not started ❌ | Iteration 2  |
+| Leave Review                    | Not started ❌ | Iteration 2  |
+| Notifications                   | Not started ❌ | Iteration 2  |
+| Cleaner Availability Scheduling | Not started ❌ | Iteration 2  |
