@@ -27,5 +27,6 @@ Description-v2: As a user, I want to leave reviews and ratings for cleaners afte
 # UI Design:
 
 * Insert a mockup design screenshot using any prototyping tools, e.g. [https://ninjamock.com/](https://ninjamock.com/)
+<img width="1319" height="760" alt="스크린샷 2025-08-05 23 43 33" src="https://github.com/user-attachments/assets/f667fc39-c64d-457e-a117-70783d20bd6d" />
 
 # Completed:
