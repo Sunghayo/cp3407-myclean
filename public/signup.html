@@ -6,9 +6,15 @@
   <title>Sign Up - MyClean</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
     body {
       font-family: 'Inter', sans-serif;
       background: #f9fafb;
+      color: #1f2937;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -17,8 +23,11 @@
       margin: 0;
     }
     h1 {
+      font-size: 28px;
+      font-weight: 700;
       color: #2563eb;
       margin-bottom: 24px;
+      text-align: center;
     }
     form {
       background: #ffffff;
@@ -46,28 +55,40 @@
       border: none;
       border-radius: 8px;
       cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #1e40af;
     }
     p {
       margin-top: 20px;
       text-align: center;
+      font-size: 14px;
     }
     a {
       color: #2563eb;
       text-decoration: none;
       font-weight: 500;
     }
+    @media (max-width: 500px) {
+      .signup-container {
+        padding: 30px;
+      }
+    }
   </style>
 </head>
 <body>
-  <h1>Join MyClean</h1>
-  <form>
-    <input type="text" id="name" placeholder="Full Name" required />
-    <input type="tel" id="phone" placeholder="Phone Number" required />
-    <input type="email" id="email" placeholder="Email address" required />
-    <input type="password" id="password" placeholder="Password (min 6 characters)" required />
-    <button type="submit">Sign Up</button>
-  </form>
-  <p>Already have an account? <a href="login.html">Login here</a></p>
+  <div class="form">
+    <h1>Join MyClean</h1>
+    <form>
+      <input type="text" id="name" placeholder="Full Name" required />
+      <input type="tel" id="phone" placeholder="Phone Number" required />
+      <input type="email" id="email" placeholder="Email address" required />
+      <input type="password" id="password" placeholder="Password (min 6 characters)" required />
+      <button type="submit">Sign Up</button>
+    </form>
+    <p>Already have an account? <a href="login.html">Login here</a></p>
+  </div>
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
