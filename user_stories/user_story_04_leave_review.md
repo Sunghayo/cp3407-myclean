@@ -33,6 +33,10 @@ Description-v2: As a user, I want to leave reviews and ratings for cleaners afte
 - Finetuning and modifications were made by **Mi-La (ML)**
 
 ### Screenshots
+🔗 [View Write Review Page](https://cp3407-myclean.vercel.app/review_write.html)
+
+🔗 [View Review Page](https://cp3407-myclean.vercel.app/review.html)
+
 Below are screenshots of completed review feature:
 
 <img width="1470" height="832" alt="Screenshot 2025-08-06 at 14 49 29" src="https://github.com/user-attachments/assets/6df8096d-9530-4eba-933b-c9b4859eee3c" />
