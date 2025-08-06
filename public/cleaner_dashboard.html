@@ -7,15 +7,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #f4f6f8;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    .main-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
     }
+      body {
+        font-family: 'Inter', sans-serif;
+        background: #f4f6f8;
+        margin: 0;
+        padding: 0;
+      }
     .header-bar {
       width: 100%;
       background-color: #ffffff;
@@ -89,7 +91,6 @@
   </style>
 </head>
 <body>
-  <header>
   <header class="header-bar">
     <div class="header-content">
       <a href="index.html" class="header-link">Home</a>
@@ -98,23 +99,25 @@
     </div>
   </header>
 
-  <div class="filters">
-    <select id="serviceFilter">
-      <option value="">All Services</option>
-      <option value="Standard">Standard</option>
-      <option value="Standard Plus">Standard Plus</option>
-      <option value="Deep Cleaning">Deep Cleaning</option>
-    </select>
-    <input type="text" id="dateFilter" placeholder="Filter by Date" />
-    <select id="statusFilter">
-      <option value="">All</option>
-      <option value="confirmed">Only My Confirmed</option>
-    </select>
-  </div>
+  <main class="main-content">
+    <div class="filters">
+      <select id="serviceFilter">
+        <option value="">All Services</option>
+        <option value="Standard">Standard</option>
+        <option value="Standard Plus">Standard Plus</option>
+        <option value="Deep Cleaning">Deep Cleaning</option>
+      </select>
+      <input type="text" id="dateFilter" placeholder="Filter by Date" />
+      <select id="statusFilter">
+        <option value="">All</option>
+        <option value="confirmed">Only My Confirmed</option>
+      </select>
+    </div>
 
-  <div class="calendar-container">
-    <div id="bookingList">Loading...</div>
-  </div>
+    <div class="calendar-container">
+      <div id="bookingList">Loading...</div>
+    </div>
+  </main>
 
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script type="module">
