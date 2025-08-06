@@ -319,74 +319,59 @@
   </footer>
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+  import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
   import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyDnusZ7fck0nU_b0iDZAbAUyliQ0Dbc5Mc",
     authDomain: "mycleanjcu.firebaseapp.com",
     projectId: "mycleanjcu",
-    storageBucket: "mycleanjcu.appspot.com",  // 🔧 오타 수정 (firebasestorage.app → appspot.com)
+    storageBucket: "mycleanjcu.firebasestorage.app",
     messagingSenderId: "137404600804",
     appId: "1:137404600804:web:e2bd6b28fe6d9b7cb637f1"
   };
+
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
   const db = getFirestore(app);
 
-  const nav = document.querySelector("nav");
-  const dashboardMenu = document.getElementById("cleanerDashboardMenu");
+  const form = document.querySelector("form");
 
-  onAuthStateChanged(auth, async (user) => {
-    if (user) {
-      let displayName = user.displayName;
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-      const docRef = doc(db, "users", user.uid);
-      const docSnap = await getDoc(docRef);
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
 
-      if (docSnap.exists()) {
-        const userData = docSnap.data();
-        displayName = userData.name || user.email;
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
 
-        if (userData.role === "cleaner") {
-          dashboardMenu.style.display = "block";
+      const userDocRef = doc(db, "users", user.uid);
+      const userDoc = await getDoc(userDocRef);
+
+      if (userDoc.exists()) {
+        const userData = userDoc.data();
+        const role = userData.role;
+
+        alert("Login successful!");
+
+        if (role === "cleaner") {
+          window.location.href = "cleaner_dashboard.html";
+        } else if (role === "customer") {
+          window.location.href = "index.html";
+        } else {
+          alert("Unknown role. Access denied.");
         }
       } else {
-        displayName = user.email;
+        alert("User data not found in Firestore.");
       }
-
-      const userSpan = document.createElement("span");
-      userSpan.textContent = `Hello, ${displayName}`;
-      userSpan.style.marginLeft = "20px";
-      userSpan.style.color = "#2563eb";
-
-      const logoutLink = document.createElement("a");
-      logoutLink.href = "#";
-      logoutLink.textContent = "Logout";
-      logoutLink.style.marginLeft = "20px";
-      logoutLink.onclick = async () => {
-        await signOut(auth);
-        window.location.reload();
-      };
-
-      const loginLink = document.querySelector('a[href="login.html"]');
-      if (loginLink) loginLink.remove();
-
-      nav.appendChild(userSpan);
-      nav.appendChild(logoutLink);
+    } catch (error) {
+      alert("Login failed: " + error.message);
     }
   });
-
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/firebase-messaging-sw.js')
-      .then((registration) => {
-        console.log("✅ Service Worker registered:", registration);
-      })
-      .catch((err) => {
-        console.error("❌ Service Worker registration failed:", err);
-      });
-  }
 </script>
+
   
 <script type="module" src="/firebase.js"></script>
 <script type="module" src="/login.js"></script>
