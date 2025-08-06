@@ -23,7 +23,7 @@ Allow users to schedule cleaning sessions conveniently.
 - [x] Confirm and store booking in database – 0.5 day  
 
 ## UI Design (Mockup/figma)    
-- 🔗 [View Mockup](https://ninjamock.com/s/XRNN7Lx)(No longer in use)
+- 🔗 [View Mockup](https://ninjamock.com/s/XRNN7Lx) (No longer in use)
 - 🔗 [View Figma](https://www.figma.com/proto/n42s1wX1D6KatzTybRvOqm/UI-CP3407?node-id=0-1&t=u24iLbJqg7FjxBzF-1) (created by **Yu-Yang (YC)**
 
 ## Completed  
