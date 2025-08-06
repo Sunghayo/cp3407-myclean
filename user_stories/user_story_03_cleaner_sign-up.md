@@ -33,7 +33,7 @@ The cleaner registration feature should collect full name, contact details, serv
 - Finetuning and modifications were made by **Mi-La (ML)**
 
 ### Screenshots
-🔗 [View Page](https://cp3407-myclean.vercel.app/cleaner_signup.html)
+🔗 [View Cleaner Sign-Up Page](https://cp3407-myclean.vercel.app/cleaner_signup.html)
 
 Below are screenshots of completed cleaner signup feature:
 
