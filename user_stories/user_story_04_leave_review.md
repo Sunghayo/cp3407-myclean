@@ -25,8 +25,15 @@ Description-v2: As a user, I want to leave reviews and ratings for cleaners afte
 2. Submit and store reviews: 0.5 days
 
 ## UI Design (Mockup/figma)    
-- 🔗 [View Mockup](https://ninjamock.com/s/XRNN7Lx)(No longer in use)
-- 🔗 [View Figma](https://www.figma.com/proto/n42s1wX1D6KatzTybRvOqm/UI-CP3407?node-id=0-1&t=u24iLbJqg7FjxBzF-1)
+- 🔗 [View Mockup](https://ninjamock.com/s/XRNN7Lx) (No longer in use)
+- 🔗 [View Figma](https://www.figma.com/proto/n42s1wX1D6KatzTybRvOqm/UI-CP3407?node-id=0-1&t=u24iLbJqg7FjxBzF-1) (Created by **Yu-Yang (YC)**
 
 ## Completed  
-- ✅ All tasks were implemented by **Sungha (SH)**  
+- ✅ All tasks were implemented by **Sungha (SH)**
+- Finetuning and modifications were made by **Mi-La (ML)**
+
+### Screenshots
+
+<img width="1470" height="832" alt="Screenshot 2025-08-06 at 14 49 29" src="https://github.com/user-attachments/assets/6df8096d-9530-4eba-933b-c9b4859eee3c" />
+<img width="1470" height="831" alt="Screenshot 2025-08-06 at 14 49 07" src="https://github.com/user-attachments/assets/64f32909-0a90-429d-ad09-ee8cf0e04805" />
+<img width="1470" height="831" alt="Screenshot 2025-08-06 at 14 49 16" src="https://github.com/user-attachments/assets/cb6c5913-be01-4335-93cc-b22a0f93a44d" />
