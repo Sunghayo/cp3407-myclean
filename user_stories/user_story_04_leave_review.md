@@ -33,7 +33,7 @@ Description-v2: As a user, I want to leave reviews and ratings for cleaners afte
 - Finetuning and modifications were made by **Mi-La (ML)**
 
 ### Screenshots
-Below are screenshots of completed register/login feature:
+Below are screenshots of completed review feature:
 
 <img width="1470" height="832" alt="Screenshot 2025-08-06 at 14 49 29" src="https://github.com/user-attachments/assets/6df8096d-9530-4eba-933b-c9b4859eee3c" />
 <img width="1470" height="831" alt="Screenshot 2025-08-06 at 14 49 07" src="https://github.com/user-attachments/assets/64f32909-0a90-429d-ad09-ee8cf0e04805" />
