@@ -27,4 +27,10 @@ Description-v2: As a cleaner, I want to set my available time slots so that cust
 - 🔗 [View Figma](https://www.figma.com/proto/n42s1wX1D6KatzTybRvOqm/UI-CP3407?node-id=0-1&t=u24iLbJqg7FjxBzF-1)
 
 ## Completed  
-- ✅ All tasks were implemented by **Sungha (SH)**  
+- ✅ All tasks were implemented by **Sungha (SH)**
+- Finetuning and modifications were made by **Mi-La (ML)**
+
+### Screenshots
+Below are screenshots of completed cleaner availability feature:
+
+<img width="1470" height="832" alt="Screenshot 2025-08-06 at 14 55 43" src="https://github.com/user-attachments/assets/3a03df1b-a136-4e16-8668-bdd2aa89ac5b" />
