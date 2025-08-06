@@ -83,17 +83,14 @@
     .booking:hover {
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
     }
-    .booking-row {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 8px;
+    .booking.pending {
+      border-left-color: gray;
     }
-    .booking-row strong {
-      font-weight: 600;
-      color: #374151;
+    .booking.confirmed {
+      border-left-color: #2563eb; /* blue */
     }
-    .booking-row span {
-      color: #4b5563;
+    .booking.completed {
+      border-left-color: #10b981; /* green */
     }
   </style>
 </head>
