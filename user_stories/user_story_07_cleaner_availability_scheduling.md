@@ -31,6 +31,8 @@ Description-v2: As a cleaner, I want to set my available time slots so that cust
 - Finetuning and modifications were made by **Mi-La (ML)**
 
 ### Screenshots
+🔗 [View Cleaner Dashboard Page](https://cp3407-myclean.vercel.app/cleaner_dashboard.html)
+
 Below are screenshots of completed cleaner availability feature:
 
 <img width="1470" height="832" alt="Screenshot 2025-08-06 at 14 55 43" src="https://github.com/user-attachments/assets/3a03df1b-a136-4e16-8668-bdd2aa89ac5b" />
