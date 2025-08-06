@@ -24,13 +24,12 @@ Allow users to schedule cleaning sessions conveniently.
 
 ## UI Design (Mockup/figma)    
 - 🔗 [View Mockup](https://ninjamock.com/s/XRNN7Lx)(No longer in use)
-- 🔗 [View Figma](https://www.figma.com/proto/n42s1wX1D6KatzTybRvOqm/UI-CP3407?node-id=18-2&t=C5J8wy2TUtNpNocP-1)
+- 🔗 [View Figma](https://www.figma.com/proto/n42s1wX1D6KatzTybRvOqm/UI-CP3407?node-id=0-1&t=u24iLbJqg7FjxBzF-1)
 
 ## Completed  
-- ✅ All tasks were implemented by **Sungha (SH)**
-- Fine-tuning and modifications were done by **Mi-La (ML)**
+- ✅ All tasks were implemented by **Sungha (SH)**  
+- ✅ Below are screenshots of completed booking feature:
 
 ### Screenshots  
-- ✅ Below are screenshots of completed booking feature:
 
 <img width="1920" height="924" alt="스크린샷 2025-07-23 04 06 23" src="https://github.com/user-attachments/assets/7070daca-bad8-42ee-bdb4-4e7abd502901" />

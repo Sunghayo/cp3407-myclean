@@ -26,7 +26,7 @@ Description-v2: As a user, I want to leave reviews and ratings for cleaners afte
 
 ## UI Design (Mockup/figma)    
 - 🔗 [View Mockup](https://ninjamock.com/s/XRNN7Lx)(No longer in use)
-- 🔗 [View Figma](https://www.figma.com/proto/n42s1wX1D6KatzTybRvOqm/UI-CP3407?node-id=176-16&t=C5J8wy2TUtNpNocP-1)
+- 🔗 [View Figma](https://www.figma.com/proto/n42s1wX1D6KatzTybRvOqm/UI-CP3407?node-id=0-1&t=u24iLbJqg7FjxBzF-1)
 
 ## Completed  
 - ✅ All tasks were implemented by **Sungha (SH)**  

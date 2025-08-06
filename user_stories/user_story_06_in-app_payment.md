@@ -24,7 +24,7 @@ Secure payment system for user convenience.
 
 ## UI Design (Mockup/figma)    
 - 🔗 [View Mockup](https://ninjamock.com/s/XRNN7Lx)(No longer in use)
-- 🔗 [View Figma](https://www.figma.com/proto/n42s1wX1D6KatzTybRvOqm/UI-CP3407?node-id=156-16&p=f&t=u24iLbJqg7FjxBzF-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=18%3A2)
+- 🔗 [View Figma](https://www.figma.com/proto/n42s1wX1D6KatzTybRvOqm/UI-CP3407?node-id=0-1&t=u24iLbJqg7FjxBzF-1)
 ## Completed  
 - ✅ All tasks were implemented by **Sungha (SH)**  
 - ✅ Stripe checkout integrated with dynamic price ID  

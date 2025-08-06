@@ -27,9 +27,8 @@ Description-v2: As a user, I want to get real-time support through a chatbot int
 
 ## UI Design (Mockup/figma)    
 - 🔗 [View Mockup](https://ninjamock.com/s/XRNN7Lx)(No longer in use)
-- 🔗 [View Figma](https://www.figma.com/proto/n42s1wX1D6KatzTybRvOqm/UI-CP3407?node-id=84-14&p=f&t=u24iLbJqg7FjxBzF-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=18%3A2)
+- 🔗 [View Figma](https://www.figma.com/proto/n42s1wX1D6KatzTybRvOqm/UI-CP3407?node-id=0-1&t=u24iLbJqg7FjxBzF-1)
 
-## Completed  
 - ✅ All tasks were implemented by **Sungha (SH)**  
 - [O] Tidio chatbot embedded on all key pages  
 - [O] FAQ-based auto-response configured  
