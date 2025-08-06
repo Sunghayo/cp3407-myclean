@@ -183,14 +183,14 @@
           const div = document.createElement("div");
           div.className = `booking ${data.status || "pending"}`;
           div.innerHTML = `
-            <div class="booking-row"><strong>Service:</strong> <span>${data.service}</span></div>
-            <div class="booking-row"><strong>Date:</strong> <span>${data.date}</span></div>
-            <div class="booking-row"><strong>Time:</strong> <span>${data.time}</span></div>
-            <div class="booking-row"><strong>Address:</strong> <span>${data.address || "N/A"}</span></div>
-            <div class="booking-row"><strong>Notes:</strong> <span>${data.notes || "-"}</span></div>
-            <div class="booking-row"><strong>Client:</strong> <span>${data.clientName || "N/A"}</span></div>
-            <div class="booking-row"><strong>Status:</strong> <span>${data.status || "pending"}</span></div>
-            <div class="booking-row"><strong>Cleaner:</strong> <span>${data.cleanerName || "-"}</span></div>
+            <strong>Service:</strong> ${data.service}<br>
+            <strong>Date:</strong> ${data.date}<br>
+            <strong>Time:</strong> ${data.time}<br>
+            <strong>Address:</strong> ${data.address || "N/A"}<br>
+            <strong>Notes:</strong> ${data.notes || "-"}<br>
+            <strong>Client:</strong> ${data.clientName || "N/A"}<br>
+            <strong>Status:</strong> ${data.status || "pending"}<br>
+            <strong>Cleaner:</strong> ${data.cleanerName || "-"}<br>
           `;
           if (data.status !== "confirmed" && !data.cleanerId) {
             const acceptBtn = document.createElement("button");
