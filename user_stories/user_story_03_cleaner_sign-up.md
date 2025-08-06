@@ -26,7 +26,7 @@ The cleaner registration feature should collect full name, contact details, serv
 
 ## UI Design (Mockup/figma)    
 - 🔗 [View Mockup](https://ninjamock.com/s/XRNN7Lx) (No longer in use)
-- 🔗 [View Figma](https://www.figma.com/proto/n42s1wX1D6KatzTybRvOqm/UI-CP3407?node-id=0-1&t=u24iLbJqg7FjxBzF-1) (Created by **Yu-Yang (YC)**
+- 🔗 [View Figma](https://www.figma.com/proto/n42s1wX1D6KatzTybRvOqm/UI-CP3407?node-id=0-1&t=u24iLbJqg7FjxBzF-1) (Created by **Yu-Yang (YC)**)
 
 ## Completed  
 - ✅ All tasks were implemented by **Sungha (SH)**
