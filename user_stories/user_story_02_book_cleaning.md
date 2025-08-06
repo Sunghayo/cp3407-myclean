@@ -31,6 +31,8 @@ Allow users to schedule cleaning sessions conveniently.
 - Finetuning and modifications were done by **Mi-La (ML)**
 
 ### Screenshots  
+🔗 [View Booking Page](https://cp3407-myclean.vercel.app/booking.html)
+
 Below are screenshots of completed booking feature:
 
 <img width="1920" height="924" alt="스크린샷 2025-07-23 04 06 23" src="https://github.com/user-attachments/assets/7070daca-bad8-42ee-bdb4-4e7abd502901" />
