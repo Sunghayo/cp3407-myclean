@@ -38,6 +38,7 @@ Search or filter functionality may be considered in future phases.
 
 ### Screenshots  
 🔗 [View Page](https://cp3407-myclean.vercel.app/review.html# )
+
 Below is a screenshot of the completed FAQ page:
 
 <img width="1470" height="831" alt="Screenshot 2025-08-06 at 15 07 34" src="https://github.com/user-attachments/assets/733a2d72-bc1d-46ba-9ca6-8998b82e9abf" />
