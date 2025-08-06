@@ -91,6 +91,17 @@
     .footer-section a:hover {
       text-decoration: underline;
     }
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+    .toggle-icon {
+      font-size: 24px;
+      color: #2563eb;
+      transition: transform 0.3s ease;
+    }
   </style>
 </head>
 <body>
@@ -111,6 +122,7 @@
 
     <div class="faq-item">
       <h3>How do I book a cleaning service?</h3>
+      <span class="toggle-icon">+</span>
       <div class="faq-answer">
         <p>You can book a service directly through our website by clicking the "Book Now" button...</p>
       </div>
@@ -118,6 +130,7 @@
 
     <div class="faq-item">
       <h3>What’s included in a Standard Cleaning?</h3>
+      <span class="toggle-icon">+</span>
       <div class="faq-answer">
         <p>Standard Cleaning covers high-traffic areas and common surfaces to help maintain your home. It’s ideal for regular upkeep and is our most affordable option.</p>
       </div>
@@ -125,6 +138,7 @@
 
     <div class="faq-item">
       <h3>Do I need to be home during the cleaning?</h3>
+      <span class="toggle-icon">+</span>
       <div class="faq-answer">
         <p>It’s up to you! Many customers provide access instructions so they don’t need to be present. All of our cleaners are background-checked and trusted.</p>
       </div>
@@ -132,6 +146,7 @@
 
     <div class="faq-item">
       <h3>What is the difference between Deep Cleaning and Move-out Cleaning?</h3>
+      <span class="toggle-icon">+</span>
       <div class="faq-answer">
         <p>Deep Cleaning focuses on deeply embedded grime and overlooked areas like behind furniture. Move-out Cleaning is for empty homes, aiming to restore the space to a move-in ready condition for inspections.</p>
       </div>
@@ -139,6 +154,7 @@
       
     <div class="faq-item">
       <h3>Can I cancel or reschedule my booking?</h3>
+      <span class="toggle-icon">+</span>
       <div class="faq-answer">
         <p>Yes! You can cancel or reschedule anytime from your account dashboard. Just make sure to do so at least 24 hours in advance to avoid a fee.</p>
       </div>
@@ -171,18 +187,18 @@
     </div>
   </footer>
   <script>
-    // Hide all answers by default
     document.querySelectorAll('.faq-answer').forEach(answer => {
       answer.style.display = 'none';
     });
-
-    // Toggle answer visibility on question click
-    document.querySelectorAll('.faq-item h3').forEach(header => {
-      header.style.cursor = 'pointer';
-      header.addEventListener('click', () => {
-        const answer = header.nextElementSibling;
+    
+    document.querySelectorAll('.faq-question').forEach((questionEl) => {
+      const icon = questionEl.querySelector('.toggle-icon');
+      const answer = questionEl.nextElementSibling;
+  
+      questionEl.addEventListener('click', () => {
         const isVisible = answer.style.display === 'block';
         answer.style.display = isVisible ? 'none' : 'block';
+        icon.textContent = isVisible ? '+' : '–';
       });
     });
   </script>
