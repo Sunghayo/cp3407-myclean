@@ -31,7 +31,7 @@ Search or filter functionality may be considered in future phases.
 - **Mobile responsiveness tweaks:** 0.5 days  
 
 ## UI Design (Mockup/Figma)  
-🔗 View Figma (Created by **Yu-Yang (YC)**)
+🔗 [View Figma](https://www.figma.com/proto/n42s1wX1D6KatzTybRvOqm/UI-CP3407?node-id=215-26&t=MDg8TWwqVaDGNOFF-1&starting-point-node-id=18%3A2) (Created by **Yu-Yang (YC)**)
 
 ## Completed  
 - ✅ All tasks were implemented by **Sungha (SH)**
