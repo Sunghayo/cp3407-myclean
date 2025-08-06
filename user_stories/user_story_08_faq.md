@@ -37,7 +37,7 @@ Search or filter functionality may be considered in future phases.
 - ✅ All tasks were implemented by **Sungha (SH)**  
 
 ### Screenshots  
-🔗 [View Page](https://cp3407-myclean.vercel.app/review.html# )
+🔗 [View Page](https://www.figma.com/proto/n42s1wX1D6KatzTybRvOqm/UI-CP3407?node-id=0-1&t=u24iLbJqg7FjxBzF-1 )
 
 Below is a screenshot of the completed FAQ page:
 
