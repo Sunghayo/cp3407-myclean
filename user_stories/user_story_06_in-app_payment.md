@@ -23,8 +23,8 @@ Secure payment system for user convenience.
 - [x] Secure transaction setup and redirection – 1 day  
 
 ## UI Design (Mockup/figma)    
-- 🔗 [View Mockup](https://ninjamock.com/s/XRNN7Lx)(No longer in use)
-- 🔗 [View Figma](https://www.figma.com/proto/n42s1wX1D6KatzTybRvOqm/UI-CP3407?node-id=0-1&t=u24iLbJqg7FjxBzF-1)
+- 🔗 [View Mockup](https://ninjamock.com/s/XRNN7Lx) (No longer in use)
+- 🔗 [View Figma](https://www.figma.com/proto/n42s1wX1D6KatzTybRvOqm/UI-CP3407?node-id=0-1&t=u24iLbJqg7FjxBzF-1) (Created by **Yu-Yang (YC)**
 ## Completed  
 - ✅ All tasks were implemented by **Sungha (SH)**  
 - ✅ Stripe checkout integrated with dynamic price ID  
