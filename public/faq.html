@@ -170,5 +170,21 @@
       </div>
     </div>
   </footer>
+  <script>
+    // Hide all answers by default
+    document.querySelectorAll('.faq-answer').forEach(answer => {
+      answer.style.display = 'none';
+    });
+
+    // Toggle answer visibility on question click
+    document.querySelectorAll('.faq-item h3').forEach(header => {
+      header.style.cursor = 'pointer';
+      header.addEventListener('click', () => {
+        const answer = header.nextElementSibling;
+        const isVisible = answer.style.display === 'block';
+        answer.style.display = isVisible ? 'none' : 'block';
+      });
+    });
+  </script>
 </body>
 </html>
