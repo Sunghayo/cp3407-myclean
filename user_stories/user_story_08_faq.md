@@ -34,7 +34,8 @@ Search or filter functionality may be considered in future phases.
 🔗 View Figma (Created by **Yu-Yang (YC)**)
 
 ## Completed  
-- ✅ All tasks were implemented by **Sungha (SH)**  
+- ✅ All tasks were implemented by **Sungha (SH)**
+- Finetuning and modifications were made by **Mi-La (ML)**
 
 ### Screenshots  
 🔗 [View FAQ Page](https://www.figma.com/proto/n42s1wX1D6KatzTybRvOqm/UI-CP3407?node-id=0-1&t=u24iLbJqg7FjxBzF-1 )
