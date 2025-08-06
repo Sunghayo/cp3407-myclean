@@ -33,6 +33,6 @@ The cleaner registration feature should collect full name, contact details, serv
 - Finetuning and modifications were made by **Mi-La (ML)**
 
 ### Screenshots
-Below are screenshots of completed register/login feature:
+Below are screenshots of completed cleaner signup feature:
 
 <img width="1470" height="833" alt="Screenshot 2025-08-06 at 14 44 57" src="https://github.com/user-attachments/assets/f1365916-3931-48d0-ad40-0a894667c029" />
