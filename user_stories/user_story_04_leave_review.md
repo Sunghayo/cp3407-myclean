@@ -24,10 +24,9 @@ Description-v2: As a user, I want to leave reviews and ratings for cleaners afte
 1. Review UI design: 0.5 days
 2. Submit and store reviews: 0.5 days
 
-# UI Design:
-
-* Insert a mockup design screenshot using any prototyping tools, e.g. [https://ninjamock.com/](https://ninjamock.com/)
-<img width="1319" height="760" alt="스크린샷 2025-08-05 23 43 33" src="https://github.com/user-attachments/assets/f667fc39-c64d-457e-a117-70783d20bd6d" />
+## UI Design (Mockup/figma)    
+- 🔗 [View Mockup](https://ninjamock.com/s/XRNN7Lx)(No longer in use)
+- 🔗 [View Figma](https://www.figma.com/proto/n42s1wX1D6KatzTybRvOqm/UI-CP3407?node-id=176-16&t=C5J8wy2TUtNpNocP-1)
 
 ## Completed  
 - ✅ All tasks were implemented by **Sungha (SH)**  

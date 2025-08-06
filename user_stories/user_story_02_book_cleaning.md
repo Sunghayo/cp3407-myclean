@@ -22,9 +22,9 @@ Allow users to schedule cleaning sessions conveniently.
 - [x] Implement booking logic and validation – 1 day  
 - [x] Confirm and store booking in database – 0.5 day  
 
-## UI Design (Mockup)  
-- Includes calendar/date picker, dropdown for service types, and a "Book Now" button.  
-- 🔗 [View Mockup](https://ninjamock.com/s/XRNN7Lx)
+## UI Design (Mockup/figma)    
+- 🔗 [View Mockup](https://ninjamock.com/s/XRNN7Lx)(No longer in use)
+- 🔗 [View Figma](https://www.figma.com/proto/n42s1wX1D6KatzTybRvOqm/UI-CP3407?node-id=18-2&t=C5J8wy2TUtNpNocP-1)
 
 ## Completed  
 - ✅ All tasks were implemented by **Sungha (SH)**  

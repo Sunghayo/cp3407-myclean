@@ -24,8 +24,9 @@ The cleaner registration feature should collect full name, contact details, serv
 2. Develop form validation and submission backend – 1 day  
 3. Display confirmation screen after successful registration – 0.5 day
 
-# UI Design:
-<img width="1126" height="721" alt="스크린샷 2025-08-05 23 44 25" src="https://github.com/user-attachments/assets/b555efab-ffdf-4baa-8530-4c706e999505" />
+## UI Design (Mockup/figma)    
+- 🔗 [View Mockup](https://ninjamock.com/s/XRNN7Lx)(No longer in use)
+- 🔗 [View Figma](hhttps://www.figma.com/proto/n42s1wX1D6KatzTybRvOqm/UI-CP3407?node-id=19-180&t=C5J8wy2TUtNpNocP-1)
 
 ## Completed  
 - ✅ All tasks were implemented by **Sungha (SH)**  

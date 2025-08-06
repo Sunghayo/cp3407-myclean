@@ -22,8 +22,9 @@ Description-v2: As a cleaner, I want to set my available time slots so that cust
 1. Availability UI design: 1 day
 2. Database update for schedules: 1 day
 
-# UI Design:
-<img width="1546" height="932" alt="스크린샷 2025-08-05 23 42 56" src="https://github.com/user-attachments/assets/8cd9183d-ba3d-4ef8-be7d-be1d2a377483" />
+## UI Design (Mockup/figma)    
+- 🔗 [View Mockup](https://ninjamock.com/s/XRNN7Lx)(No longer in use)
+- 🔗 [View Figma](https://www.figma.com/proto/n42s1wX1D6KatzTybRvOqm/UI-CP3407?node-id=156-16&p=f&t=u24iLbJqg7FjxBzF-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=18%3A2)
 
 ## Completed  
 - ✅ All tasks were implemented by **Sungha (SH)**  

@@ -24,8 +24,8 @@ Set up session handling and redirection – 0.5 day
 
 ## UI Design (Mockup/figma)  
 - Created using NinjaMock by Yu-Yang  
-- 🔗 [View Mockup](https://ninjamock.com/s/XRNN7Lx)
-- 🔗 [View Figma](https://www.figma.com/proto/n42s1wX1D6KatzTybRvOqm/UI-CP3407?node-id=35-11&t=C5J8wy2TUtNpNocP-1)
+- 🔗 [View Mockup](https://ninjamock.com/s/XRNN7Lx)(No longer in use)
+- 🔗 [View Figma](https://www.figma.com/proto/n42s1wX1D6KatzTybRvOqm/UI-CP3407?node-id=84-43&t=C5J8wy2TUtNpNocP-1)
 
 ## Completed  
 - ✅ All tasks were implemented by **Sungha (SH)**  
