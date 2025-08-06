@@ -25,7 +25,7 @@
 - Vercel: https://cp3407-myclean.vercel.app
 
 **Design/Mockup Tool**  
-- NinjaMock – for UI wireframes 
+- Figma – for UI wireframes 
 
 **User Role Management**  
 - Roles: `customer`, `cleaner` (stored in Firestore `users` collection)  
