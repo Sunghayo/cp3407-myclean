@@ -12,7 +12,7 @@
 - **Leave Review** | Priority: Medium | Estimate: 1 day  
   - As a customer, I want to leave a star rating and review after a service so that I can provide feedback and help others.
 
-- **Notifications** | Priority: Low | Estimate: 1 day  
+- **Chatbots** | Priority: Low | Estimate: 1 day  
   - As a user, I want to receive automatic notifications for bookings and updates so that I’m always informed.
 
 - **In-app Payment** | Priority: High | Estimate: 3 days  
