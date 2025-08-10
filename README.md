@@ -28,9 +28,10 @@ MyClean is an online platform designed to help users conveniently book cleaning 
 ## Team Roles
 | Team Member           | Role                                  | Responsibilities                                                                                                                                        |
 | --------------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Sungha Hwang (SH)** | 🛠 GitHub Setup & Backend Development | - Set up GitHub repository and Project board<br>- Develop backend logic for login, booking, and payment<br>- Manage Firestore database integration |
-| **Mi-La Ang (ML)**    | 💻 Frontend Development               | - Build user-facing components<br>- Integrate frontend with backend Firebase services<br>- Implement login and booking UI                                            |
-| **Yuyang Chao (YC)**  | 🎨 UI/UX Coordination                 | - Design UI layout and user flow (e.g. using ninjamock/figma)<br>- Ensure consistent and user-friendly interface<br>- Support frontend with layout references     |
+| **Sungha Hwang (SH)** | 🛠 GitHub Setup / Frontend & Backend Development / UI/UX Coordination | - Set up GitHub repository and Project board, ensuring proper version control and issue tracking<br>- Led the development of all core features in Iterations 1 and 2, including login, booking, payment, cleaner sign-up, review system, chatbots, and availability scheduling<br>- Developed backend logic and coordinated seamless integration with the frontend<br>- Managed Firestore database integration with focus on scalability and data security<br>- Oversaw troubleshooting, bug fixes, and deployment |
+| **Mi-La Ang (ML)**    | 💻 Frontend Development               | - Build user-facing components<br>- Integrate frontend with backend Firebase services<br>- Implement login and booking UI |
+| **Yuyang Chao (YC)**  | 🎨 UI/UX Coordination                 | - Design UI layout and user flow (e.g. using ninjamock/figma)<br>- Ensure consistent and user-friendly interface<br>- Support frontend with layout references |
+
 
 
 # Project planning BEFORE iteration-1, (see chapters 1-3)
@@ -67,7 +68,7 @@ All features tested on Chrome, Safari, and Firefox.
 Planned Features:
 1. [Cleaner Sign-Up](./user_stories/user_story_04_cleaner_signup.md), Priority: Medium, 2 days
 2. [Leave Review](./user_stories/user_story_05_review.md), Priority: Medium, 1 day
-3. [Notifications](./user_stories/user_story_06_notifications.md), Priority: Low, 1 day
+3. [chatbots](./user_stories/user_story_06_chatbots.md), Priority: Low, 1 day
 4. [Cleaner Availability Scheduling](./user_stories/user_story_07_availability.md), Priority: Medium, 2 days
 
 Total: 6 days
