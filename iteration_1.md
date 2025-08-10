@@ -1,7 +1,7 @@
 ## Actual iteration-1 board (see chapters 3 and 4)
 
 **Start Date:** 11 June 2025  
-**End Date:** 17 July 2025  
+**End Date:** 24 July 2025  
 
 ---
 
@@ -32,17 +32,19 @@
 ---
 
 ### Completed:
-- Login Feature (SH, ML, YC), date completed: @ June  
-- Book Cleaning (SH, ML, YC), date completed: @ June  
-- In-app Payment (SH, ML, YC), date completed: @ June  
+- Login Feature (SH, ML, YC), date completed: 26 June  
+- Book Cleaning (SH, ML, YC), date completed: 4 July  
+- In-app Payment (SH, ML, YC), date completed: 24 July  
 
 ---
 
 ### Burn Down for iteration-1 (see chapter 4):
 _Update this at least once per week_
 
-- 4 weeks left: 7 days of estimated amount of work  
-- 2 weeks left: 4 days  
-- 1 week left: 1 day  
+- 6 weeks left: 7 days of estimated amount of work  
+- 4 weeks left: 4 days  
+- 2 weeks left: 2 days  
 - 0 weeks left: 0 days  
-- **Actual Velocity:** 7 days / 4 weeks = **1.75 days/week**
+- **Actual Velocity:** 7 days / 6 weeks = **1.17 days/week**
+
+---
