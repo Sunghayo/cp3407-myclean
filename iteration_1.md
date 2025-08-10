@@ -1,4 +1,4 @@
-## Actual iteration-1 board (see chapters 3 and 4)
+## iteration-1 board (see chapters 3 and 4)
 
 **Start Date:** 11 June 2025  
 **End Date:** 24 July 2025  
