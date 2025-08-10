@@ -68,7 +68,7 @@ All features tested on Chrome, Safari, and Firefox.
 Planned Features:
 1. [Cleaner Sign-Up](./user_stories/user_story_04_cleaner_signup.md), Priority: Medium, 2 days
 2. [Leave Review](./user_stories/user_story_05_review.md), Priority: Medium, 1 day
-3. [chatbots](./user_stories/user_story_06_chatbots.md), Priority: Low, 1 day
+3. [Chatbots](./user_stories/user_story_06_chatbots.md), Priority: Low, 1 day
 4. [Cleaner Availability Scheduling](./user_stories/user_story_07_availability.md), Priority: Medium, 2 days
 
 Total: 6 days
@@ -80,7 +80,6 @@ Other possible additions (if time allows):
 
 ### Not enough time/developers: 
 1. Additional analytics dashboard
-2. Customer support chatbot
 
 Total: TBD
 
