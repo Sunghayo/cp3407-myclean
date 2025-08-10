@@ -20,7 +20,7 @@
 ### User stories or tasks (see chapter 4):
 1. **Cleaner Sign-Up**, Priority: Medium, 2 days  
 2. **Leave Review**, Priority: Medium, 1 day  
-3. **Notifications**, Priority: Low, 1 day  
+3. **Chatbots**, Priority: Low, 1 day  
 4. **Cleaner Availability Scheduling**, Priority: Medium, 2 days
 5. **FAQs**, Priority: Medium, 2 days
 
@@ -29,7 +29,7 @@
 ### In Progress:
 - Cleaner Sign-Up (SH, ML), date started: 18 July  
 - Leave Review (ML), date started: 18 July  
-- Notifications (SH), date started: 18 July  
+- Chatbots (SH), date started: 18 July  
 - Cleaner Availability Scheduling (SH, YC), date started: 18 July
 - FAQs (SH, ML), date started: 
 
@@ -38,7 +38,7 @@
 ### Completed:
 - Cleaner Sign-Up (SH, ML), date completed: @ July  
 - Leave Review (ML), date completed: @ July  
-- Notifications (SH), date completed: @ July  
+- Chatbots (SH), date completed: @ July  
 - Cleaner Availability Scheduling (SH, YC), date completed: @ July
 - FAQs (SH, ML), date completed: 
 
