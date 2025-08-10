@@ -13,7 +13,7 @@
   - As a customer, I want to leave a star rating and review after a service so that I can provide feedback and help others.
 
 - **Chatbots** | Priority: Low | Estimate: 1 day  
-  - As a user, I want to receive automatic notifications for bookings and updates so that I’m always informed.
+  - As a user, I want to get instant support through a website-integrated chatbot so that I can quickly resolve issues without calling or emailing.
 
 - **In-app Payment** | Priority: High | Estimate: 3 days  
   - As a customer, I want to pay for cleaning services directly in the app using card or PayNow so that I don’t need to handle cash.
